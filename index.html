@@ -1,0 +1,2534 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bernardo Sinhorelli | Desenvolvedor de Software</title>
+    <meta name="description" content="Portfólio de Bernardo Sinhorelli, desenvolvedor Backend e Full Stack com foco em Java, Spring Boot e arquitetura de software." />
+    <meta name="theme-color" content="#0d1117" />
+
+    <meta property="og:title" content="Bernardo Sinhorelli | Desenvolvedor de Software" />
+    <meta property="og:description" content="Portfólio profissional de Bernardo Sinhorelli. Especializado em Backend, Java, Spring Boot e arquitetura de software." />
+    <meta property="og:type" content="website" />
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+      /* ============================================================
+   VARIÁVEIS
+   ============================================================ */
+:root {
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --bg-card: rgba(255, 255, 255, 0.03);
+    --bg-card-hover: rgba(255, 255, 255, 0.07);
+
+    --text-primary: #f0f6fc;
+    --text-secondary: #8b949e;
+    --text-muted: #484f58;
+
+    --accent-1: #58a6ff;
+    --accent-2: #a78bfa;
+    --accent-gradient: linear-gradient(135deg, #58a6ff 0%, #a78bfa 100%);
+
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    --border-hover: rgba(88, 166, 255, 0.2);
+
+    --shadow-card: 0 16px 48px rgba(0, 0, 0, 0.5);
+
+    --radius-card: 20px;
+    --radius-sm: 12px;
+    --radius-pill: 100px;
+
+    --transition: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    --section-padding: 100px 0;
+    --container-width: 1140px;
+}
+
+/* ============================================================
+   RESET
+   ============================================================ */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+::selection {
+    background: var(--accent-1);
+    color: #fff;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--accent-1);
+    border-radius: 10px;
+}
+
+/* ============================================================
+   UTILITÁRIOS
+   ============================================================ */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 28px;
+}
+
+.section-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent-1);
+    background: rgba(88, 166, 255, 0.08);
+    padding: 6px 18px;
+    border-radius: var(--radius-pill);
+    margin-bottom: 16px;
+    border: 1px solid rgba(88, 166, 255, 0.06);
+}
+
+.section-title {
+    font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    letter-spacing: -0.03em;
+}
+
+.section-title .highlight {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    max-width: 560px;
+    line-height: 1.6;
+}
+
+.section-header {
+    margin-bottom: 56px;
+}
+.section-header.centered {
+    text-align: center;
+}
+.section-header.centered .section-subtitle {
+    margin: 0 auto;
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 12px 0;
+    background: rgba(13, 17, 23, 0.7);
+    backdrop-filter: blur(20px) saturate(1.3);
+    -webkit-backdrop-filter: blur(20px) saturate(1.3);
+    border-bottom: 1px solid var(--border-subtle);
+    transition: var(--transition);
+}
+
+.navbar.scrolled {
+    background: rgba(13, 17, 23, 0.94);
+    box-shadow: 0 4px 40px rgba(0, 0, 0, 0.5);
+}
+
+.navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-logo {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+.navbar-logo span {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+}
+
+.navbar-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+    padding: 4px 0;
+}
+
+.navbar-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-gradient);
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+.navbar-links a:hover,
+.navbar-links a.active {
+    color: var(--text-primary);
+}
+.navbar-links a:hover::after,
+.navbar-links a.active::after {
+    width: 100%;
+}
+
+.navbar-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px 2px;
+    z-index: 1001;
+}
+.navbar-toggle span {
+    display: block;
+    width: 26px;
+    height: 2.5px;
+    background: var(--text-primary);
+    border-radius: 4px;
+    transition: var(--transition);
+    transform-origin: center;
+}
+.navbar-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.navbar-toggle.active span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+.navbar-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 0 60px;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.hero-decoration {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.5;
+    animation: orbFloat 20s ease-in-out infinite alternate;
+}
+
+.orb-1 {
+    width: 500px;
+    height: 500px;
+    top: -200px;
+    right: -100px;
+    background: radial-gradient(circle, rgba(88, 166, 255, 0.25), transparent 70%);
+    animation-delay: 0s;
+}
+
+.orb-2 {
+    width: 400px;
+    height: 400px;
+    bottom: -150px;
+    left: -100px;
+    background: radial-gradient(circle, rgba(167, 139, 250, 0.2), transparent 70%);
+    animation-delay: -5s;
+    animation-duration: 25s;
+}
+
+.orb-3 {
+    width: 300px;
+    height: 300px;
+    top: 30%;
+    left: 40%;
+    background: radial-gradient(circle, rgba(88, 166, 255, 0.08), transparent 70%);
+    animation-delay: -10s;
+    animation-duration: 18s;
+}
+
+@keyframes orbFloat {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(30px, -40px) scale(1.1);
+    }
+    50% {
+        transform: translate(-20px, 20px) scale(0.95);
+    }
+    75% {
+        transform: translate(40px, 30px) scale(1.05);
+    }
+    100% {
+        transform: translate(-30px, -20px) scale(1);
+    }
+}
+
+.code-float {
+    position: absolute;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    opacity: 0.08;
+    pointer-events: none;
+    animation: codeFloat 30s linear infinite;
+    white-space: nowrap;
+}
+
+.code-float-1 {
+    top: 15%;
+    right: 5%;
+    animation-duration: 35s;
+    font-size: 0.9rem;
+}
+
+.code-float-2 {
+    bottom: 20%;
+    right: 12%;
+    animation-duration: 40s;
+    animation-delay: -10s;
+    font-size: 0.8rem;
+}
+
+.code-float-3 {
+    top: 50%;
+    right: 2%;
+    animation-duration: 28s;
+    animation-delay: -5s;
+    font-size: 0.7rem;
+}
+
+@keyframes codeFloat {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.06;
+    }
+    25% {
+        opacity: 0.12;
+    }
+    50% {
+        transform: translateY(-60px) rotate(2deg);
+        opacity: 0.06;
+    }
+    75% {
+        opacity: 0.12;
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.06;
+    }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+}
+
+.hero-greeting-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.hero-greeting-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    padding: 6px 18px 6px 14px;
+    border-radius: var(--radius-pill);
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+}
+
+.hero-greeting-badge:hover {
+    border-color: var(--border-hover);
+    background: var(--bg-card-hover);
+}
+
+.hero-greeting-badge.freelance {
+    background: rgba(34, 197, 94, 0.08);
+    border-color: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+}
+
+.hero-greeting-badge.freelance i {
+    color: #22c55e;
+}
+
+.pulse-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    animation: pulseDot 2s ease-in-out infinite;
+    flex-shrink: 0;
+}
+
+@keyframes pulseDot {
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.4;
+        transform: scale(0.7);
+    }
+}
+
+.hero-main {
+    margin-bottom: 12px;
+}
+
+.hero-greeting {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 2px;
+}
+
+.hero-greeting .wave {
+    display: inline-block;
+    animation: wave 2.8s infinite;
+    transform-origin: 70% 70%;
+}
+
+@keyframes wave {
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+    10% {
+        transform: rotate(16deg);
+    }
+    20% {
+        transform: rotate(-6deg);
+    }
+    30% {
+        transform: rotate(16deg);
+    }
+    40% {
+        transform: rotate(-4deg);
+    }
+    50% {
+        transform: rotate(12deg);
+    }
+    60% {
+        transform: rotate(0deg);
+    }
+}
+
+.hero-title {
+    font-size: clamp(3.2rem, 8vw, 5.4rem);
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+    margin-bottom: 6px;
+}
+
+.hero-title .highlight {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-role-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.hero-role {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-weight: 600;
+    color: var(--accent-1);
+    background: rgba(88, 166, 255, 0.08);
+    padding: 2px 20px;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(88, 166, 255, 0.1);
+    position: relative;
+}
+
+.hero-role::after {
+    content: '|';
+    display: inline-block;
+    animation: blink 1s step-end infinite;
+    margin-left: 2px;
+    color: var(--accent-1);
+}
+
+@keyframes blink {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+.hero-description {
+    max-width: 600px;
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 16px 0 28px;
+}
+
+.hero-description .tech-highlight {
+    color: var(--accent-1);
+    font-weight: 500;
+}
+
+.hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 34px;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    padding: 8px 20px;
+    border-radius: var(--radius-pill);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: var(--transition);
+}
+
+.hero-badge:hover {
+    border-color: var(--border-hover);
+    color: var(--text-primary);
+    transform: translateY(-3px) scale(1.02);
+    background: var(--bg-card-hover);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.hero-badge i {
+    color: var(--accent-1);
+    font-size: 0.8rem;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: center;
+}
+
+.hero-social {
+    display: flex;
+    gap: 10px;
+    margin-left: 4px;
+}
+
+/* ============================================================
+   BOTÕES
+   ============================================================ */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 34px;
+    border-radius: var(--radius-pill);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.01em;
+}
+
+.btn-primary {
+    background: var(--accent-gradient);
+    color: #fff;
+    box-shadow: 0 4px 28px rgba(88, 166, 255, 0.25);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), transparent 60%);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.btn-primary:hover::before {
+    transform: translateX(0);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 44px rgba(88, 166, 255, 0.35);
+}
+
+.btn-secondary {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border: 1px solid var(--border-subtle);
+    backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-hover);
+    transform: translateY(-3px);
+}
+
+.btn-icon {
+    padding: 14px 18px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-subtle);
+    font-size: 1.15rem;
+    transition: var(--transition);
+}
+
+.btn-icon:hover {
+    color: var(--text-primary);
+    border-color: var(--border-hover);
+    transform: translateY(-3px);
+    background: var(--bg-card-hover);
+}
+
+.btn-sm {
+    padding: 9px 22px;
+    font-size: 0.8rem;
+}
+
+/* ============================================================
+   SEÇÕES
+   ============================================================ */
+section {
+    padding: var(--section-padding);
+}
+
+section:nth-child(even) {
+    background: var(--bg-secondary);
+}
+
+/* ============================================================
+   SOBRE
+   ============================================================ */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: start;
+}
+
+.about-text p {
+    color: var(--text-secondary);
+    margin-bottom: 18px;
+    font-size: 1.02rem;
+    line-height: 1.7;
+}
+.about-text p:last-child {
+    margin-bottom: 0;
+}
+
+.about-photo {
+    width: 100%;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    transition: var(--transition);
+    aspect-ratio: 1 / 1;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+.about-photo:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card);
+}
+
+.about-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.about-photo-fallback {
+    display: none;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: var(--bg-card);
+    color: var(--text-muted);
+    padding: 40px 32px;
+    min-height: 280px;
+    text-align: center;
+}
+
+.about-photo-fallback .icon {
+    font-size: 4.5rem;
+    color: var(--accent-1);
+    opacity: 0.2;
+    margin-bottom: 14px;
+}
+
+.about-photo-fallback .hint {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.about-photo-fallback .hint span {
+    font-size: 0.75rem;
+    display: block;
+    margin-top: 2px;
+    opacity: 0.5;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* ============================================================
+   HABILIDADES
+   ============================================================ */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+}
+
+.skills-category {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-card);
+    padding: 30px 26px;
+    transition: var(--transition);
+}
+
+.skills-category:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-6px);
+    background: var(--bg-card-hover);
+}
+
+.skills-category-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 18px;
+    color: var(--text-primary);
+}
+
+.skills-category-title i {
+    color: var(--accent-1);
+    font-size: 1.2rem;
+    width: 24px;
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skill-tag {
+    background: rgba(255, 255, 255, 0.04);
+    padding: 5px 16px;
+    border-radius: var(--radius-pill);
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    border: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.skill-tag:hover {
+    color: var(--text-primary);
+    border-color: var(--border-hover);
+    background: rgba(255, 255, 255, 0.07);
+}
+
+/* ============================================================
+   PROJETOS
+   ============================================================ */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--border-hover);
+    box-shadow: var(--shadow-card);
+    background: var(--bg-card-hover);
+}
+
+.project-image {
+    width: 100%;
+    height: 210px;
+    background: var(--bg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    position: relative;
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.project-image-fallback {
+    display: none;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: var(--bg-secondary);
+    color: var(--text-muted);
+}
+
+.project-image-fallback .icon {
+    font-size: 3.5rem;
+    opacity: 0.12;
+}
+
+.project-image-fallback .path {
+    font-size: 0.65rem;
+    opacity: 0.2;
+    margin-top: 8px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.project-body {
+    padding: 28px;
+}
+
+.project-body .project-tag {
+    display: inline-block;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-1);
+    background: rgba(88, 166, 255, 0.1);
+    padding: 3px 14px;
+    border-radius: var(--radius-pill);
+    margin-bottom: 10px;
+}
+
+.project-body .project-tag.primary {
+    background: rgba(88, 166, 255, 0.15);
+    color: var(--accent-1);
+}
+
+.project-body h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.project-body p {
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.project-techs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 18px;
+}
+
+.project-techs span {
+    background: rgba(255, 255, 255, 0.04);
+    padding: 3px 14px;
+    border-radius: var(--radius-pill);
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    border: 1px solid var(--border-subtle);
+}
+
+.project-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.project-actions .btn {
+    flex: 1;
+    justify-content: center;
+    min-width: 100px;
+}
+
+/* ============================================================
+   EXPERIÊNCIA
+   ============================================================ */
+.timeline {
+    position: relative;
+    padding-left: 36px;
+    max-width: 740px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 9px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: var(--border-subtle);
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 44px;
+    padding-left: 28px;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -31px;
+    top: 8px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--bg-primary);
+    border: 2.5px solid var(--accent-1);
+    box-shadow: 0 0 0 5px var(--bg-primary), 0 0 0 6px var(--border-subtle);
+    transition: var(--transition);
+}
+
+.timeline-item:hover::before {
+    border-color: var(--accent-2);
+    box-shadow: 0 0 0 5px var(--bg-primary), 0 0 0 6px var(--border-hover);
+}
+
+.timeline-item .timeline-date {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent-1);
+    margin-bottom: 2px;
+    letter-spacing: 0.02em;
+}
+
+.timeline-item h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.timeline-item .timeline-company {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+}
+
+.timeline-item ul {
+    list-style: none;
+    padding: 0;
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+.timeline-item ul li {
+    padding: 3px 0 3px 22px;
+    position: relative;
+}
+
+.timeline-item ul li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--accent-1);
+}
+
+/* ============================================================
+   FORMAÇÃO
+   ============================================================ */
+.formation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.formation-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-card);
+    padding: 32px 28px;
+    transition: var(--transition);
+}
+
+.formation-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-6px);
+    background: var(--bg-card-hover);
+}
+
+.formation-card .formation-icon {
+    font-size: 2.2rem;
+    color: var(--accent-1);
+    margin-bottom: 14px;
+}
+
+.formation-card h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.formation-card .formation-institution {
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.formation-card .formation-meta {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+/* ============================================================
+   IDIOMAS
+   ============================================================ */
+.lang-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 20px;
+}
+
+.lang-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 30px 20px;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.lang-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-6px);
+    background: var(--bg-card-hover);
+}
+
+.lang-card .lang-name {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.lang-card .lang-level {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 2px;
+}
+
+.lang-card .lang-flag {
+    font-size: 2.4rem;
+    margin-bottom: 10px;
+}
+
+/* ============================================================
+   FREELANCE
+   ============================================================ */
+.freelance-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-card);
+    padding: 48px 40px;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.freelance-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(34, 197, 94, 0.04), transparent 70%);
+    pointer-events: none;
+}
+
+.freelance-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card);
+}
+
+.freelance-icon {
+    font-size: 3rem;
+    color: #22c55e;
+    margin-bottom: 16px;
+}
+
+.freelance-card h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.freelance-card p {
+    color: var(--text-secondary);
+    font-size: 1.02rem;
+    margin-bottom: 20px;
+}
+
+.freelance-card p strong {
+    color: var(--text-primary);
+}
+
+.freelance-services {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 28px;
+}
+
+.freelance-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-subtle);
+    padding: 6px 16px;
+    border-radius: var(--radius-pill);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: var(--transition);
+}
+
+.freelance-tag:hover {
+    border-color: var(--border-hover);
+    color: var(--text-primary);
+    background: var(--bg-card-hover);
+}
+
+.freelance-tag i {
+    color: #22c55e;
+    font-size: 0.75rem;
+}
+
+.freelance-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+}
+
+/* ============================================================
+   CONTATO
+   ============================================================ */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 740px;
+    margin: 0 auto;
+}
+
+.contact-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 34px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+.contact-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-card);
+    background: var(--bg-card-hover);
+}
+
+.contact-card .contact-icon {
+    font-size: 2.4rem;
+    color: var(--accent-1);
+    margin-bottom: 12px;
+}
+
+.contact-card .contact-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.contact-card .contact-value {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    word-break: break-all;
+    margin-top: 2px;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+    padding: 48px 0 28px;
+    border-top: 1px solid var(--border-subtle);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.footer .footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+.footer .footer-social a {
+    color: var(--text-muted);
+    font-size: 1.25rem;
+    transition: var(--transition);
+}
+
+.footer .footer-social a:hover {
+    color: var(--text-primary);
+    transform: translateY(-3px);
+}
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    padding: 24px;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-card);
+    max-width: 720px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 44px;
+    transform: scale(0.94) translateY(24px);
+    transition: var(--transition);
+}
+
+.modal-overlay.active .modal {
+    transform: scale(1) translateY(0);
+}
+
+.modal-close {
+    float: right;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: var(--transition);
+    padding: 4px;
+    line-height: 1;
+}
+
+.modal-close:hover {
+    color: var(--text-primary);
+    transform: rotate(90deg);
+}
+
+.modal h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.modal .modal-meta {
+    color: var(--text-secondary);
+    margin-bottom: 18px;
+}
+
+.modal .modal-techs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.modal .modal-techs span {
+    background: rgba(255, 255, 255, 0.04);
+    padding: 4px 16px;
+    border-radius: var(--radius-pill);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-subtle);
+}
+
+.modal .modal-description {
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.modal .modal-description strong {
+    color: var(--text-primary);
+}
+
+.modal .modal-description ul {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0;
+}
+
+.modal .modal-description ul li {
+    padding: 4px 0 4px 24px;
+    position: relative;
+}
+
+.modal .modal-description ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent-1);
+    font-weight: 700;
+}
+
+.modal .modal-feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 16px;
+    margin: 12px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.modal .modal-feature-grid li {
+    padding: 4px 0 4px 20px;
+    position: relative;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.modal .modal-feature-grid li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--accent-1);
+}
+
+.modal .modal-actions {
+    display: flex;
+    gap: 14px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+}
+
+/* ============================================================
+   SCROLL TOP
+   ============================================================ */
+.scroll-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: var(--transition);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(24px);
+    z-index: 999;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.scroll-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.scroll-top:hover {
+    border-color: var(--border-hover);
+    color: var(--text-primary);
+    transform: translateY(-5px);
+    background: var(--bg-card-hover);
+}
+
+/* ============================================================
+   ANIMAÇÕES
+   ============================================================ */
+[data-animate] {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-animate].visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+[data-animate="fade-left"] {
+    transform: translateX(-40px);
+}
+[data-animate="fade-left"].visible {
+    transform: translateX(0);
+}
+
+[data-animate="fade-right"] {
+    transform: translateX(40px);
+}
+[data-animate="fade-right"].visible {
+    transform: translateX(0);
+}
+
+/* ============================================================
+   RESPONSIVIDADE
+   ============================================================ */
+@media (max-width: 992px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 44px;
+    }
+    .modal .modal-feature-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: var(--bg-secondary);
+        flex-direction: column;
+        justify-content: center;
+        gap: 24px;
+        padding: 40px;
+        transition: var(--transition);
+        border-left: 1px solid var(--border-subtle);
+    }
+
+    .navbar-links.open {
+        right: 0;
+    }
+
+    .navbar-toggle {
+        display: flex;
+    }
+
+    .hero {
+        padding: 100px 0 40px;
+        min-height: auto;
+    }
+
+    .hero-title {
+        font-size: clamp(2.6rem, 10vw, 3.4rem);
+    }
+
+    .hero-role-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .hero-role {
+        font-size: 1rem;
+        padding: 2px 16px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-actions .btn {
+        justify-content: center;
+    }
+
+    .hero-social {
+        justify-content: center;
+        margin-left: 0;
+        margin-top: 4px;
+    }
+
+    .hero-badges {
+        gap: 8px;
+    }
+
+    .hero-badge {
+        font-size: 0.7rem;
+        padding: 5px 14px;
+    }
+
+    .hero-greeting-badge {
+        font-size: 0.65rem;
+        padding: 4px 14px 4px 10px;
+    }
+
+    .pulse-dot {
+        width: 6px;
+        height: 6px;
+    }
+
+    .code-float {
+        display: none;
+    }
+
+    .orb {
+        opacity: 0.3;
+    }
+
+    .orb-1 {
+        width: 300px;
+        height: 300px;
+    }
+
+    .orb-2 {
+        width: 250px;
+        height: 250px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-header {
+        margin-bottom: 40px;
+    }
+
+    .timeline {
+        padding-left: 28px;
+    }
+
+    .timeline-item {
+        padding-left: 18px;
+        padding-bottom: 36px;
+    }
+
+    .timeline-item::before {
+        left: -24px;
+        width: 14px;
+        height: 14px;
+    }
+
+    .modal {
+        padding: 28px;
+    }
+
+    .formation-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .freelance-card {
+        padding: 32px 24px;
+    }
+
+    .freelance-services {
+        gap: 8px;
+    }
+
+    .freelance-tag {
+        font-size: 0.7rem;
+        padding: 4px 12px;
+    }
+
+    .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 500px;
+    }
+
+    .modal .modal-feature-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .hero-description {
+        font-size: 0.95rem;
+    }
+
+    .hero-badge {
+        font-size: 0.65rem;
+        padding: 4px 12px;
+    }
+
+    .hero-role {
+        font-size: 0.9rem;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr 1fr;
+        max-width: 360px;
+        gap: 12px;
+    }
+
+    .contact-card {
+        padding: 24px 12px;
+    }
+
+    .contact-card .contact-icon {
+        font-size: 1.8rem;
+    }
+
+    .contact-card .contact-label {
+        font-size: 0.8rem;
+    }
+
+    .contact-card .contact-value {
+        font-size: 0.7rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .freelance-card {
+        padding: 24px 16px;
+    }
+
+    .freelance-icon {
+        font-size: 2.2rem;
+    }
+
+    .freelance-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .freelance-tag {
+        font-size: 0.65rem;
+        padding: 3px 10px;
+    }
+
+    .freelance-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .freelance-actions .btn {
+        justify-content: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    [data-animate] {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================
+    NAVBAR
+    ============================================================ -->
+    <header class="navbar" role="navigation" aria-label="Navegação principal">
+        <div class="container">
+            <a href="#home" class="navbar-logo">B<span>S</span></a>
+
+            <button class="navbar-toggle" aria-label="Abrir menu" aria-expanded="false" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="#home" class="active">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#experiencia">Experiência</a></li>
+                <li><a href="#formacao">Formação</a></li>
+                <li><a href="#idiomas">Idiomas</a></li>
+                <li><a href="#freelance">Freelance</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- ============================================================
+    MAIN
+    ============================================================ -->
+    <main>
+
+        <!-- ============================================================
+        HERO
+        ============================================================ -->
+        <section class="hero" id="home" aria-label="Apresentação">
+            <div class="hero-decoration">
+                <div class="orb orb-1"></div>
+                <div class="orb orb-2"></div>
+                <div class="orb orb-3"></div>
+                <div class="code-float code-float-1">
+                    <span>public class</span>
+                </div>
+                <div class="code-float code-float-2">
+                    <span>@SpringBootApplication</span>
+                </div>
+                <div class="code-float code-float-3">
+                    <span>System.out.println</span>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-greeting-wrapper">
+                        <span class="hero-greeting-badge">
+                            <span class="pulse-dot"></span>
+                            Disponível para oportunidades
+                        </span>
+                        <span class="hero-greeting-badge freelance">
+                            <i class="fa-solid fa-rocket"></i>
+                            Aceitando freelances
+                        </span>
+                    </div>
+
+                    <div class="hero-main">
+                        <p class="hero-greeting">
+                            <span class="wave">👋</span> Olá, meu nome é
+                        </p>
+                        <h1 class="hero-title">Bernardo</h1>
+                        <div class="hero-role-wrapper">
+                            <span class="hero-role" id="typingRole">Desenvolvedor Full Stack</span>
+                        </div>
+                    </div>
+
+                    <p class="hero-description">
+                        Maior afinidade por
+                        <span class="tech-highlight">Java</span> e
+                        <span class="tech-highlight">Spring Boot</span>, e interesse em
+                        <span class="tech-highlight">IA</span>, automação e desenvolvimento de sistemas.
+                    </p>
+
+                    <div class="hero-badges">
+                        <span class="hero-badge"><i class="fa-brands fa-java"></i> Java</span>
+                        <span class="hero-badge"><i class="fa-solid fa-leaf"></i> Spring Boot</span>
+                        <span class="hero-badge"><i class="fa-solid fa-layer-group"></i> Full Stack</span>
+                        <span class="hero-badge"><i class="fa-solid fa-brain"></i> IA</span>
+                    </div>
+
+                    <div class="hero-actions">
+                        <a href="#projetos" class="btn btn-primary">
+                            <i class="fa-solid fa-rocket"></i> Ver projetos
+                        </a>
+                        <a href="#contato" class="btn btn-secondary">
+                            <i class="fa-regular fa-paper-plane"></i> Entre em contato
+                        </a>
+                        <div class="hero-social">
+                            <a href="https://github.com/BeSinhorelli" target="_blank" rel="noopener" class="btn-icon" aria-label="GitHub">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/bernardosinhorelli/" target="_blank" rel="noopener" class="btn-icon" aria-label="LinkedIn">
+                                <i class="fa-brands fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        SOBRE
+        ============================================================ -->
+        <section id="sobre" aria-label="Sobre mim">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Sobre mim</span>
+                    <h2 class="section-title">Quem sou <span>eu</span></h2>
+                    <p class="section-subtitle">Um pouco da minha trajetória e objetivos profissionais</p>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-text" data-animate="fade-right">
+                        <p>
+                            Sou estudante de <strong>Análise e Desenvolvimento de Sistemas na PUCRS
+                            e formado Técnico em Informática pela Escola Técnica Mesquita</strong>. Minha jornada na tecnologia começou cedo, e desde então
+                            me dedico a aprender e construir soluções que fazem diferença.
+                        </p>
+                        <p>
+                            <strong>Gosto muito de usar desenvolvimento de software para resolução de problemas</strong>, com foco especial
+                            em <strong>Full-Stack</strong> e arquitetura de sistemas. Minha maior afinidade é com
+                            <strong>Java e Spring Boot</strong>, mas também trabalho com Python, TypeScript,
+                            JavaScript, C e ferramentas de DevOps como Docker e Git conforme a necessidade da demanda.
+                        </p>
+                        <p>
+                            Atualmente, <strong>Tenho interesse crescente em Inteligência Artificial (LLMs), explorando aplicações voltadas à automação e otimização de processos com Spring AI e APIs de IA generativa</strong>.
+                            Acredito que o aprendizado contínuo é essencial para evoluir como profissional, e estou sempre buscando novos desafios para crescer e contribuir com projetos relevantes.
+                        </p>
+                    </div>
+
+                    <div data-animate="fade-left">
+                        <div class="about-photo">
+                            <img 
+                                src="assets/images/profile.jpg" 
+                                alt="Bernardo Sinhorelli - Foto de perfil"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+                            />
+                            <div class="about-photo-fallback">
+                                <div class="icon"><i class="fa-regular fa-user"></i></div>
+                                <p class="hint">
+                                    <em>Adicione sua foto aqui</em>
+                                    <span>assets/images/profile.jpg</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        HABILIDADES
+        ============================================================ -->
+        <section id="habilidades" aria-label="Habilidades técnicas">
+            <div class="container">
+                <div class="section-header centered">
+                    <span class="section-tag">Habilidades</span>
+                    <h2 class="section-title">Hard <span>skills</span></h2>
+                </div>
+
+                <div class="skills-grid">
+                    <div class="skills-category" data-animate="fade-up">
+                        <div class="skills-category-title">
+                            <i class="fa-solid fa-server"></i> Backend
+                        </div>
+                        <div class="skills-list">
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Spring Boot</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Linguagem C</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category" data-animate="fade-up" data-delay="100">
+                        <div class="skills-category-title">
+                            <i class="fa-solid fa-code"></i> Frontend & Mobile
+                        </div>
+                        <div class="skills-list">
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Flutter</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category" data-animate="fade-up" data-delay="200">
+                        <div class="skills-category-title">
+                            <i class="fa-solid fa-database"></i> Banco de Dados
+                        </div>
+                        <div class="skills-list">
+                            <span class="skill-tag">MySQL</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category" data-animate="fade-up" data-delay="300">
+                        <div class="skills-category-title">
+                            <i class="fa-solid fa-cloud"></i> DevOps
+                        </div>
+                        <div class="skills-list">
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">GitHub</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        PROJETOS
+        ============================================================ -->
+        <section id="projetos" aria-label="Projetos">
+            <div class="container">
+                <div class="section-header centered">
+                    <span class="section-tag">Projetos</span>
+                    <h2 class="section-title">Meus <span>trabalhos</span></h2>
+                    <p class="section-subtitle">Projetos que desenvolvi para estudar, praticar e resolver problemas</p>
+                </div>
+
+                <div class="projects-grid">
+
+                    <!-- PROJETO 1 — Finance Control -->
+                    <div class="project-card" data-animate="fade-up">
+                        <div class="project-image">
+                            <img 
+                                src="assets/images/finance.png" 
+                                alt="Finance Control - Sistema de controle financeiro"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+                            />
+                            <div class="project-image-fallback">
+                                <span class="icon"><i class="fa-solid fa-coins"></i></span>
+                                <span class="path">assets/images/finance.png</span>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <span class="project-tag primary">★ Destaque</span>
+                            <h3>Finance Control</h3>
+                            <p>Sistema completo de controle financeiro pessoal que permite gerenciar receitas e despesas de forma simples e intuitiva.</p>
+                            <div class="project-techs">
+                                <span>Java</span>
+                                <span>Spring Boot</span>
+                                <span>Python</span>
+                                <span>MySQL</span>
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JS</span>
+                            </div>
+                            <div class="project-actions">
+                                <a href="https://github.com/BeSinhorelli/Finance-control" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">
+                                    <i class="fa-brands fa-github"></i> GitHub
+                                </a>
+                                <button class="btn btn-primary btn-sm" onclick="openModal('finance')">
+                                    <i class="fa-regular fa-eye"></i> Ver projeto
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PROJETO 2 — GameScoreManager -->
+                    <div class="project-card" data-animate="fade-up" data-delay="100">
+                        <div class="project-image">
+                            <img 
+                                src="assets/images/game.png" 
+                                alt="GameScoreManager - Sistema web em Java Spring"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+                            />
+                            <div class="project-image-fallback">
+                                <span class="icon"><i class="fa-solid fa-gamepad"></i></span>
+                                <span class="path">assets/images/game.png</span>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h3>GameScoreManager-SpringBoot</h3>
+                            <p>API Rest desenvolvida em Java Spring Boot para gerenciamento de jogos, players e scores. Adaptado de uma aplicação desktop Swing.</p>
+                            <div class="project-techs">
+                                <span>Java</span>
+                                <span>Spring Boot</span>
+                                <span>MySQL</span>
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JS</span>
+                            </div>
+                            <div class="project-actions">
+                                <a href="https://github.com/BeSinhorelli/GameScoreManager_SpringBoot" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">
+                                    <i class="fa-brands fa-github"></i> GitHub
+                                </a>
+                                <button class="btn btn-primary btn-sm" onclick="openModal('gamescore')">
+                                    <i class="fa-regular fa-eye"></i> Ver projeto
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        EXPERIÊNCIA
+        ============================================================ -->
+        <section id="experiencia" aria-label="Experiência profissional">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Experiência</span>
+                    <h2 class="section-title">Minha <span>trajetória</span></h2>
+                    <p class="section-subtitle">Experiências profissionais</p>
+                </div>
+
+                <div class="timeline" data-animate="fade-up">
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">Ago 2026 — Presente · 2 meses</div>
+                        <h4>Estagiário de Apoio Técnico N1</h4>
+                        <div class="timeline-company">PAYER · TECNOPUC</div>
+                        <ul>
+                            <li>Cadastro e configuração de aplicações nos ambientes dos clientes</li>
+                            <li>Implantação de aplicações de forma presencial ou remota</li>
+                            <li>Atualização e manutenção de aplicações nos clientes</li>
+                            <li>Atendimento e suporte aos clientes em dúvidas e problemas relacionados ao funcionamento das aplicações</li>
+                            <li>Acompanhamento, controle e resolução de chamados de serviço</li>
+                            <li>Análise e identificação de erros nas aplicações</li>
+                            <li>Registro e encaminhamento de incidentes para as equipes técnicas responsáveis</li>
+                            <li>Suporte de primeiro nível, buscando solucionar demandas de forma eficiente e reduzir escalonamentos</li>
+                        </ul>
+                        <br>
+                        <div class="project-techs">
+                            <span>Competências usadas: Suporte Técnico e Atendimento ao cliente</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">Mai 2026 — Jul 2026 · 3 meses</div>
+                        <h4>Estagiário de TI</h4>
+                        <div class="timeline-company">PUCRS · IDEIA - Laboratório de Alto Desempenho</div>
+                        <ul>
+                            <li>Monitoramento de tarefas por meio de aplicações web de gerenciamento de projetos</li>
+                            <li>Apoio na elaboração, melhoria de sistemas, registros e automatizações de processos da área</li>
+                            <li>Acompanhamento e registro de processos de compras de equipamentos de TI</li>
+                            <li>Melhoria do sistema interno <strong>LAD_Accounting</strong></li>
+                        </ul>
+                        <br>
+                        <div class="project-techs">
+                            <span>Competências usadas: Python, HTML, CSS, SQLite, Bash/ShellScript e suporte técnico</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">Jun 2025 — Out 2025 · 5 meses</div>
+                        <h4>Estagiário de Laboratório</h4>
+                        <div class="timeline-company">LABELO · Setor de Telecomunicações · PUCRS</div>
+                        <ul>
+                            <li>Elaboração de relatórios técnicos</li>
+                            <li>Revisão e atualização de documentação conforme feedback de clientes</li>
+                            <li>Requisição de emendas e gestão de amostras</li>
+                            <li>Comunicação com clientes e equipe interna via e-mail</li>
+                            <li>Auxílio a funcionários efetivos em rotinas técnicas de laboratório</li>
+                            <li>Atuação em laboratório com acreditação ISO/IEC 17025:2017</li>
+                        </ul>
+                        <br>
+                        <div class="project-techs">
+                            <span>Competências usadas: Comunicação, Excel e Atendimento ao cliente</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        FORMAÇÃO
+        ============================================================ -->
+        <section id="formacao" aria-label="Formação acadêmica">
+            <div class="container">
+                <div class="section-header centered">
+                    <span class="section-tag">Formação</span>
+                    <h2 class="section-title">Minha <span>educação</span></h2>
+                    <p class="section-subtitle">Cursos e instituições que fazem/fizeram parte da minha jornada</p>
+                </div>
+
+                <div class="formation-grid">
+                    <div class="formation-card" data-animate="fade-up">
+                        <div class="formation-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <h4>Tecnólogo em Análise e Desenvolvimento de Sistemas</h4>
+                        <div class="formation-institution">PUCRS</div>
+                        <div class="formation-meta">
+                            <br>Período: Julho 2025- 2027 Dezembro
+                            <br>Situação: Cursando
+                        </div>
+                    </div>
+
+                    <div class="formation-card" data-animate="fade-up" data-delay="100">
+                        <div class="formation-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                        <h4>Técnico em Informática</h4>
+                        <div class="formation-institution">Escola Técnica Mesquita</div>
+                        <div class="formation-meta">
+                            <br>Período: Fevereiro 2023-2024 Dezembro
+                            <br>Situação: Concluído
+                        </div>
+                    </div>
+
+                    <div class="formation-card" data-animate="fade-up" data-delay="100">
+                        <div class="formation-icon">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h4>Curso de Elétrica NR10</h4>
+                        <div class="formation-institution">Escola Técnica Mesquita</div>
+                        <div class="formation-meta">
+                            <br>Período: Agosto 2025 — Dezembro 2025
+                            <br>Situação: Cursando
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        IDIOMAS
+        ============================================================ -->
+        <section id="idiomas" aria-label="Idiomas">
+            <div class="container">
+                <div class="section-header centered">
+                    <span class="section-tag">Idiomas</span>
+                    <h2 class="section-title">Níveis de proficiência</h2>
+                </div>
+
+                <div class="lang-grid">
+                    <div class="lang-card" data-animate="fade-up">
+                        <div class="lang-flag">🇧🇷</div>
+                        <div class="lang-name">Português</div>
+                        <div class="lang-level">Nativo</div>
+                    </div>
+
+                    <div class="lang-card" data-animate="fade-up" data-delay="100">
+                        <div class="lang-flag">🇬🇧</div>
+                        <div class="lang-name">Inglês</div>
+                        <div class="lang-level">Intermediário-avançado/B2 e Técnico<br>Em evolução contínua</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        FREELANCE
+        ============================================================ -->
+        <section id="freelance" aria-label="Freelance">
+            <div class="container">
+                <div class="section-header centered">
+                    <span class="section-tag">Freelance</span>
+                    <h2 class="section-title">Disponível para <span>projetos</span></h2>
+                    <p class="section-subtitle">Transformo suas ideias em soluções digitais funcionais e escaláveis</p>
+                </div>
+
+                <div class="freelance-card" data-animate="fade-up">
+                    <div class="freelance-icon">
+                        <i class="fa-solid fa-handshake"></i>
+                    </div>
+                    <h3>Vamos construir algo juntos?</h3>
+                    <p>
+                        Desenvolvo <strong>sistemas personalizados</strong> para atender às necessidades do seu negócio:
+                    </p>
+                    <div class="freelance-services">
+                        <span class="freelance-tag"><i class="fa-solid fa-gear"></i> Sistemas sob medida</span>
+                        <span class="freelance-tag"><i class="fa-solid fa-arrows-spin"></i> Automação de processos</span>
+                        <span class="freelance-tag"><i class="fa-solid fa-database"></i> Gestão de dados e relatórios</span>
+                        <span class="freelance-tag"><i class="fa-solid fa-rocket"></i> Otimização e performance</span>
+                        <span class="freelance-tag"><i class="fa-solid fa-cloud"></i> Soluções web e APIs</span>
+                    </div>
+                    <div class="freelance-actions">
+                        <a href="#contato" class="btn btn-primary">
+                            <i class="fa-regular fa-paper-plane"></i> Fale comigo
+                        </a>
+                        <a href="mailto:bernardosinhorelli348@gmail.com" class="btn btn-secondary">
+                            <i class="fa-regular fa-envelope"></i> bernardosinhorelli348@gmail.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       <!-- ============================================================
+CONTATO
+============================================================ -->
+<section id="contato" aria-label="Contato">
+    <div class="container">
+        <div class="section-header centered">
+            <span class="section-tag">Contato</span>
+            <h2 class="section-title">Vamos <span>conversar</span></h2>
+            <p class="section-subtitle">Entre em contato comigo por qualquer um dos canais abaixo</p>
+        </div>
+
+        <div class="contact-grid">
+            <a href="https://github.com/BeSinhorelli" target="_blank" rel="noopener" class="contact-card" data-animate="fade-up">
+                <div class="contact-icon"><i class="fa-brands fa-github"></i></div>
+                <div class="contact-label">GitHub</div>
+                <div class="contact-value">github.com/BeSinhorelli</div>
+            </a>
+
+            <a href="https://www.linkedin.com/in/bernardosinhorelli/" target="_blank" rel="noopener" class="contact-card" data-animate="fade-up" data-delay="100">
+                <div class="contact-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+                <div class="contact-label">LinkedIn</div>
+                <div class="contact-value">linkedin.com/in/bernardosinhorelli</div>
+            </a>
+
+            <a href="mailto:bernardosinhorelli348@gmail.com" class="contact-card" data-animate="fade-up" data-delay="200">
+                <div class="contact-icon"><i class="fa-regular fa-envelope"></i></div>
+                <div class="contact-label">E-mail</div>
+                <div class="contact-value">bernardosinhorelli348@gmail.com</div>
+            </a>
+
+            <a href="tel:+5551993422584" class="contact-card" data-animate="fade-up" data-delay="300">
+                <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                <div class="contact-label">Celular</div>
+                <div class="contact-value">(51) 99342-2584</div>
+            </a>
+        </div>
+    </div>
+</section>
+    </main>
+
+    <!-- ============================================================
+    FOOTER
+    ============================================================ -->
+    <footer class="footer">
+            <p>
+                &copy; 2026 Bernardo Sinhorelli
+            </p>
+    </footer>
+
+    <!-- ============================================================
+    SCROLL TO TOP
+    ============================================================ -->
+    <button class="scroll-top" id="scrollTop" aria-label="Voltar ao topo">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- ============================================================
+    MODAL
+    ============================================================ -->
+    <div class="modal-overlay" id="projectModal" role="dialog" aria-modal="true" aria-label="Detalhes do projeto">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()" aria-label="Fechar modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modalContent">
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    JAVASCRIPT
+    ============================================================ -->
+    <script>
+        const projectsData = {
+            'finance': {
+                title: 'Finance Control',
+                description: '',
+                techs: ['Java', 'Spring Boot', 'Python', 'MySQL', 'HTML', 'CSS', 'JS'],
+                github: 'https://github.com/BeSinhorelli/Finance-control',
+                details: `
+                    <p>O <strong>Finance Control</strong> é um sistema completo de controle financeiro pessoal que permite aos usuários gerenciar receitas e despesas de forma simples e intuitiva.</p>
+                    
+                    <p>A aplicação combina diferentes tecnologias:</p>
+                    <ul>
+                        <li><strong>⚙️ Java + Spring Boot</strong> → Backend principal (API REST)</li>
+                        <li><strong>🧠 Python (Flask)</strong> → Análise inteligente de dados financeiros</li>
+                        <li><strong>🗄️ MySQL</strong> → Persistência de dados</li>
+                        <li><strong>🌐 Frontend Web</strong> → HTML, CSS e JavaScript</li>
+                        <li><strong>📊 Chart.js</strong> → Visualização de dados com gráficos</li>
+                    </ul>
+
+                    <p><strong>🎯 Funcionalidades:</strong></p>
+                    <ul class="modal-feature-grid">
+                        <li>✅ Autenticação de usuários (cadastro e login)</li>
+                        <li>✅ CRUD completo de transações (receitas e despesas)</li>
+                        <li>✅ Organização por categorias (Alimentação, Transporte, Lazer, etc.)</li>
+                        <li>✅ Dashboard interativo com gráficos dinâmicos</li>
+                        <li>✅ Filtros por período (semana, mês e ano)</li>
+                        <li>✅ Insights financeiros inteligentes gerados por Python</li>
+                        <li>✅ Visualização da evolução mensal dos gastos</li>
+                        <li>✅ Interface responsiva e moderna</li>
+                    </ul>
+
+                    <p><strong>GitHub:</strong> <a href="https://github.com/BeSinhorelli/Finance-control" target="_blank" style="color: var(--accent-1);">github.com/BeSinhorelli/Finance-control</a></p>
+                `
+            },
+            'gamescore': {
+                title: 'GameScoreManager Spring Boot',
+                description: '',
+                techs: ['Java', 'Spring Boot', 'MySQL', 'HTML', 'CSS', 'JS'],
+                github: 'https://github.com/BeSinhorelli/GameScoreManager_SpringBoot',
+                details: `
+                    <p>Uma <strong>API Rest</strong> desenvolvida em <strong>Java Spring Boot</strong> para gerenciamento de jogos, players e scores.</p>
+                    
+                    <p>Sistema originalmente adaptado de uma aplicação desktop Swing com JFrame para uma arquitetura web moderna.</p>
+
+                    <p><strong>✨ Funcionalidades:</strong></p>
+                    <ul class="modal-feature-grid">
+                        <li>✅ CRUD Completo – Create, Read, Update, Delete para todas as entidades</li>
+                        <li>🌐 API REST – requisições HTTP padrão REST</li>
+                        <li>🗄️ Banco de dados MySQL – Armazenamento de dados utilizando junto com Spring Data JPA no XAMPP</li>
+                        <li>💻 Sistema web completo - Feito em HTML, CSS e JavaScript</li>
+                    </ul>
+
+                    <p><strong>GitHub:</strong> <a href="https://github.com/BeSinhorelli/GameScoreManager_SpringBoot" target="_blank" style="color: var(--accent-1);">github.com/BeSinhorelli/GameScoreManager_SpringBoot</a></p>
+                `
+            }
+        };
+
+        function openModal(projectId) {
+            const project = projectsData[projectId];
+            if (!project) return;
+
+            const modal = document.getElementById('projectModal');
+            const content = document.getElementById('modalContent');
+
+            content.innerHTML = `
+                <h2>${project.title}</h2>
+                <div class="modal-meta">${project.description}</div>
+                <div class="modal-techs">
+                    ${project.techs.map(t => `<span>${t}</span>`).join('')}
+                </div>
+                <div class="modal-description">${project.details}</div>
+                <div class="modal-actions">
+                    <a href="${project.github}" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">
+                        <i class="fa-brands fa-github"></i> Ver no GitHub
+                    </a>
+                    <button class="btn btn-primary btn-sm" onclick="closeModal()">
+                        <i class="fa-regular fa-circle-check"></i> Fechar
+                    </button>
+                </div>
+            `;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('projectModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        document.getElementById('projectModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) closeModal();
+        });
+
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('open');
+            menuToggle.classList.toggle('active');
+            menuToggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                menuToggle.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        const sections = document.querySelectorAll('section[id]');
+        const navItems = document.querySelectorAll('.navbar-links a');
+
+        function updateActiveSection() {
+            let current = '';
+            const scrollY = window.scrollY + 100;
+
+            sections.forEach(section => {
+                const top = section.offsetTop;
+                const height = section.offsetHeight;
+                if (scrollY >= top && scrollY < top + height) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveSection);
+        window.addEventListener('load', updateActiveSection);
+
+        const scrollTopBtn = document.getElementById('scrollTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        const animateElements = document.querySelectorAll('[data-animate]');
+
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        const delay = parseInt(el.getAttribute('data-delay')) || 0;
+                        setTimeout(() => {
+                            el.classList.add('visible');
+                        }, delay);
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -20px 0px'
+            });
+
+            animateElements.forEach(el => observer.observe(el));
+        } else {
+            animateElements.forEach(el => el.classList.add('visible'));
+        }
+
+        const navbar = document.querySelector('.navbar');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        document.querySelectorAll('a[href="#"]').forEach(link => {
+            link.addEventListener('click', (e) => e.preventDefault());
+        });
+
+        console.log('🚀 Portfólio de Bernardo Sinhorelli carregado com sucesso!');
+    </script>
+
+</body>
+</html>
