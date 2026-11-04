@@ -18,17 +18,19 @@
 :root{--bg:#0d1117;--bg2:#161b22;--card:rgba(22,27,34,.55);--card-h:rgba(255,255,255,.06);--tx:#f0f6fc;--tx2:#8b949e;--tx3:#5b636d;--a1:#58a6ff;--a2:#a78bfa;--grad:linear-gradient(135deg,#58a6ff,#a78bfa);--bd:rgba(255,255,255,.07);--bdh:rgba(88,166,255,.3);--glow:0 0 0 1px rgba(88,166,255,.18),0 20px 60px -20px rgba(88,166,255,.35);--r:20px;--pill:100px;--t:.4s cubic-bezier(.22,1,.36,1)}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:80px}
-body{font-family:'Inter',-apple-system,sans-serif;background:radial-gradient(1200px 600px at 85% -10%,rgba(88,166,255,.08),transparent 60%),radial-gradient(900px 500px at -10% 40%,rgba(167,139,250,.07),transparent 60%),var(--bg);background-attachment:fixed;color:var(--tx);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-family:'Inter',-apple-system,sans-serif;background:radial-gradient(1200px 600px at 85% -10%,rgba(88,166,255,.08),transparent 60%),radial-gradient(900px 500px at -10% 40%,rgba(167,139,250,.07),transparent 60%),var(--bg);background-attachment:fixed;color:var(--tx);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;max-width:100vw}
 ::selection{background:var(--a1);color:#fff}
 ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--a1);border-radius:10px}
 a:focus-visible,button:focus-visible{outline:2px solid var(--a1);outline-offset:3px;border-radius:8px}
-.container{max-width:1140px;margin:0 auto;padding:0 28px}
-section{padding:100px 0}
+img,video,svg{max-width:100%;height:auto;display:block}
+h1,h2,h3,h4,p,li,a,span{overflow-wrap:break-word;word-wrap:break-word}
+.container{max-width:1140px;margin:0 auto;padding:0 28px;width:100%}
+section{padding:100px 0;max-width:100vw;overflow-x:hidden}
 section.alt{background:linear-gradient(180deg,rgba(22,27,34,.9),rgba(13,17,23,.4) 50%,rgba(22,27,34,.9));border-block:1px solid var(--bd)}
 .grad,.section-title span{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .tag{display:inline-flex;align-items:center;gap:8px;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.15em;color:var(--a1);background:rgba(88,166,255,.08);padding:6px 18px;border-radius:var(--pill);margin-bottom:16px;border:1px solid rgba(88,166,255,.1)}
-.tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--a1);box-shadow:0 0 10px var(--a1)}
-.section-title{font-size:clamp(2.2rem,4.5vw,3.2rem);font-weight:800;line-height:1.1;margin-bottom:10px;letter-spacing:-.03em}
+.tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--a1);box-shadow:0 0 10px var(--a1);flex-shrink:0}
+.section-title{font-size:clamp(1.8rem,4.5vw,3.2rem);font-weight:800;line-height:1.1;margin-bottom:10px;letter-spacing:-.03em}
 .section-subtitle{color:var(--tx2);font-size:1.05rem;max-width:560px}
 .section-header{margin-bottom:56px}.centered{text-align:center}.centered .section-subtitle{margin:0 auto}
 .progress{position:fixed;top:0;left:0;height:3px;width:100%;background:var(--grad);transform:scaleX(0);transform-origin:left;z-index:1100;box-shadow:0 0 12px rgba(88,166,255,.6)}
@@ -36,35 +38,35 @@ section.alt{background:linear-gradient(180deg,rgba(22,27,34,.9),rgba(13,17,23,.4
 /* NAV */
 .navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:14px 0;background:rgba(13,17,23,.7);backdrop-filter:blur(20px) saturate(1.3);-webkit-backdrop-filter:blur(20px) saturate(1.3);border-bottom:1px solid var(--bd);transition:var(--t)}
 .navbar.scrolled{background:rgba(13,17,23,.94);box-shadow:0 4px 40px rgba(0,0,0,.5)}
-.navbar .container{display:flex;align-items:center;justify-content:space-between}
-.logo{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:var(--card);border:1px solid var(--bd);font-weight:800;color:var(--tx);text-decoration:none}
+.navbar .container{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:var(--card);border:1px solid var(--bd);font-weight:800;color:var(--tx);text-decoration:none;flex-shrink:0}
 .logo span{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.nav-links{display:flex;gap:28px;list-style:none}
-.nav-links a{color:var(--tx2);text-decoration:none;font-size:.85rem;font-weight:500;position:relative;padding:4px 0;transition:var(--t)}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+.nav-links a{color:var(--tx2);text-decoration:none;font-size:.85rem;font-weight:500;position:relative;padding:4px 0;transition:var(--t);white-space:nowrap}
 .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:var(--grad);border-radius:4px;transition:var(--t)}
 .nav-links a:hover,.nav-links a.active{color:var(--a1)}.nav-links a:hover::after,.nav-links a.active::after{width:100%}
-.toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px 2px;z-index:1001}
+.toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px 4px;z-index:1001;flex-shrink:0}
 .toggle span{display:block;width:26px;height:2.5px;background:var(--tx);border-radius:4px;transition:var(--t)}
 .toggle.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.toggle.active span:nth-child(2){opacity:0}.toggle.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
 
 /* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 60px;position:relative;overflow:hidden;isolation:isolate}
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 60px;position:relative;overflow:hidden;isolation:isolate;max-width:100vw}
 .hero::before{content:'';position:absolute;inset:0;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 30%,transparent 75%);mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 30%,transparent 75%)}
 .orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:.5;pointer-events:none;z-index:-1;animation:float 20s ease-in-out infinite alternate}
 .o1{width:500px;height:500px;top:-200px;right:-100px;background:radial-gradient(circle,rgba(88,166,255,.3),transparent 70%)}
 .o2{width:400px;height:400px;bottom:-150px;left:-100px;background:radial-gradient(circle,rgba(167,139,250,.25),transparent 70%);animation-delay:-6s}
 @keyframes float{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-20px,30px) scale(.95)}100%{transform:translate(30px,-30px) scale(1.08)}}
-.hero-content{max-width:780px}
+.hero-content{max-width:780px;width:100%}
 .badges-top{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
 .pill{display:inline-flex;align-items:center;gap:10px;font-size:.75rem;font-weight:500;color:var(--tx2);background:var(--card);border:1px solid var(--bd);padding:6px 18px 6px 14px;border-radius:var(--pill);backdrop-filter:blur(10px);box-shadow:0 4px 24px rgba(0,0,0,.25)}
 .pill.green{background:rgba(34,197,94,.08);border-color:rgba(34,197,94,.25);color:#22c55e}
-.dot{width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulse 2s ease-in-out infinite}
+.dot{width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulse 2s ease-in-out infinite;flex-shrink:0}
 @keyframes pulse{50%{opacity:.4;transform:scale(.7)}}
 .hello{color:var(--tx2);font-weight:500}
 .wave{display:inline-block;animation:wave 2.8s infinite;transform-origin:70% 70%}
 @keyframes wave{0%,60%,100%{transform:rotate(0)}10%,30%{transform:rotate(16deg)}20%{transform:rotate(-6deg)}50%{transform:rotate(12deg)}}
-.hero-title{font-size:clamp(3.4rem,9vw,6.4rem);font-weight:800;line-height:1.02;letter-spacing:-.04em;margin-bottom:8px;background:linear-gradient(180deg,#fff 30%,#9db4d3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.role{display:inline-block;min-height:2.2em;font-size:clamp(1.1rem,2vw,1.5rem);font-weight:600;color:var(--a1);background:linear-gradient(135deg,rgba(88,166,255,.14),rgba(167,139,250,.12));padding:4px 22px;border-radius:var(--pill);border:1px solid rgba(88,166,255,.25)}
+.hero-title{font-size:clamp(2.6rem,9vw,6.4rem);font-weight:800;line-height:1.02;letter-spacing:-.04em;margin-bottom:8px;background:linear-gradient(180deg,#fff 30%,#9db4d3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;word-break:break-word}
+.role{display:inline-block;min-height:2.2em;font-size:clamp(.95rem,2vw,1.5rem);font-weight:600;color:var(--a1);background:linear-gradient(135deg,rgba(88,166,255,.14),rgba(167,139,250,.12));padding:4px 22px;border-radius:var(--pill);border:1px solid rgba(88,166,255,.25);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:top}
 .role::after{content:'|';margin-left:2px;animation:blink 1s step-end infinite}
 @keyframes blink{50%{opacity:0}}
 .hero-desc{max-width:600px;color:var(--tx2);font-size:1.05rem;margin:18px 0 26px}
@@ -73,53 +75,55 @@ section.alt{background:linear-gradient(180deg,rgba(22,27,34,.9),rgba(13,17,23,.4
 .chip{display:inline-flex;align-items:center;gap:8px;background:var(--card);backdrop-filter:blur(10px);border:1px solid var(--bd);padding:8px 20px;border-radius:var(--pill);font-size:.8rem;font-weight:500;color:var(--tx2);transition:var(--t)}
 .chip:hover{border-color:var(--bdh);color:var(--tx);transform:translateY(-3px)}.chip i{color:var(--a1)}
 .actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;border-radius:var(--pill);font:600 .9rem 'Inter',sans-serif;text-decoration:none;transition:var(--t);border:none;cursor:pointer}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 32px;border-radius:var(--pill);font:600 .9rem 'Inter',sans-serif;text-decoration:none;transition:var(--t);border:none;cursor:pointer;max-width:100%}
 .btn-p{background:var(--grad);color:#fff;box-shadow:0 8px 32px rgba(88,166,255,.3),inset 0 1px 0 rgba(255,255,255,.25)}
 .btn-p:hover{transform:translateY(-3px);box-shadow:0 12px 44px rgba(88,166,255,.45)}
 .btn-s{background:var(--card);color:var(--tx);border:1px solid var(--bd)}.btn-s:hover{background:var(--card-h);border-color:var(--bdh);transform:translateY(-3px)}
 .btn-sm{padding:9px 22px;font-size:.8rem}
-.social{display:flex;gap:10px}
-.ico{width:50px;height:50px;display:grid;place-items:center;border-radius:50%;background:var(--card);color:var(--tx2);border:1px solid var(--bd);font-size:1.15rem;transition:var(--t);text-decoration:none}
+.social{display:flex;gap:10px;flex-shrink:0}
+.ico{width:50px;height:50px;display:grid;place-items:center;border-radius:50%;background:var(--card);color:var(--tx2);border:1px solid var(--bd);font-size:1.15rem;transition:var(--t);text-decoration:none;flex-shrink:0}
 .ico:hover{color:var(--tx);border-color:var(--bdh);transform:translateY(-3px)}
 
 /* CARDS */
-.card{position:relative;isolation:isolate;background:var(--card);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--bd);border-radius:var(--r);transition:var(--t)}
+.card{position:relative;isolation:isolate;background:var(--card);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--bd);border-radius:var(--r);transition:var(--t);max-width:100%;overflow:hidden}
 .card::after{content:'';position:absolute;inset:0;border-radius:inherit;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(88,166,255,.14),transparent 45%);opacity:0;transition:opacity .35s;pointer-events:none;z-index:-1}
 .card:hover{border-color:var(--bdh);transform:translateY(-6px);box-shadow:var(--glow)}.card:hover::after{opacity:1}
-.iconbox{display:grid;place-items:center;width:52px;height:52px;border-radius:15px;background:rgba(88,166,255,.1);color:var(--a1);font-size:1.4rem;margin-bottom:14px}
+.iconbox{display:grid;place-items:center;width:52px;height:52px;border-radius:15px;background:rgba(88,166,255,.1);color:var(--a1);font-size:1.4rem;margin-bottom:14px;flex-shrink:0}
 
 /* SOBRE */
 .about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:70px;align-items:center}
 .about-text p{color:var(--tx2);margin-bottom:18px;font-size:1.02rem}.about-text strong{color:var(--tx);font-weight:600}
-.photo{aspect-ratio:1;max-width:400px;margin:0 auto;border-radius:var(--r);overflow:hidden;padding:8px;border:1px solid transparent;background:linear-gradient(var(--bg),var(--bg)) padding-box,linear-gradient(135deg,rgba(88,166,255,.6),rgba(167,139,250,.2) 50%,rgba(255,255,255,.05)) border-box;box-shadow:0 30px 80px -30px rgba(88,166,255,.35)}
+.photo{aspect-ratio:1;width:100%;max-width:400px;margin:0 auto;border-radius:var(--r);overflow:hidden;padding:8px;border:1px solid transparent;background:linear-gradient(var(--bg),var(--bg)) padding-box,linear-gradient(135deg,rgba(88,166,255,.6),rgba(167,139,250,.2) 50%,rgba(255,255,255,.05)) border-box;box-shadow:0 30px 80px -30px rgba(88,166,255,.35)}
 .photo img{width:100%;height:100%;object-fit:cover;border-radius:14px;display:block}
-.fallback{display:none;width:100%;height:100%;align-items:center;justify-content:center;flex-direction:column;text-align:center;color:var(--tx3);font-size:.85rem}
+.fallback{display:none;width:100%;height:100%;align-items:center;justify-content:center;flex-direction:column;text-align:center;color:var(--tx3);font-size:.85rem;padding:16px}
 .fallback i{font-size:4rem;color:var(--a1);opacity:.25;margin-bottom:12px}
+.fallback span{word-break:break-all}
 
 /* SKILLS */
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
 .skills-grid .card{padding:30px 26px}
 .card h3.cat{display:flex;align-items:center;gap:12px;font-size:1rem;font-weight:600;margin-bottom:18px}
-.cat i{display:grid;place-items:center;width:38px;height:38px;border-radius:10px;background:rgba(88,166,255,.1);color:var(--a1);font-size:1rem}
+.cat i{display:grid;place-items:center;width:38px;height:38px;border-radius:10px;background:rgba(88,166,255,.1);color:var(--a1);font-size:1rem;flex-shrink:0}
 .tags{display:flex;flex-wrap:wrap;gap:8px}
 .tags span{background:rgba(255,255,255,.05);padding:6px 14px;border-radius:var(--pill);font-size:.78rem;font-weight:500;color:var(--tx2);border:1px solid transparent;transition:var(--t)}
 .tags span:hover{color:var(--a1);border-color:var(--bdh);transform:translateY(-2px)}
 
 /* PROJETOS */
-.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:30px}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:30px}
 .project{overflow:hidden}.project:hover{transform:translateY(-10px)}
 .p-img{height:210px;background:var(--bg2);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .p-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(13,17,23,.85));pointer-events:none}
 .p-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.22,1,.36,1)}
 .project:hover .p-img img{transform:scale(1.06)}
+.p-img .fallback{position:absolute;inset:0}
 .p-img .fallback i{font-size:3.5rem;opacity:.2;margin:0}
 .p-body{padding:26px 28px 28px}
 .star{display:inline-block;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#fbbf24;background:linear-gradient(135deg,rgba(251,191,36,.18),rgba(251,146,60,.12));border:1px solid rgba(251,191,36,.25);padding:3px 14px;border-radius:var(--pill);margin-bottom:10px}
 .p-body h3{font-size:1.2rem;font-weight:700;margin-bottom:8px}
 .p-body p{color:var(--tx2);font-size:.92rem;line-height:1.6;margin-bottom:16px}
 .techs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
-.techs span{background:rgba(255,255,255,.04);padding:3px 14px;border-radius:var(--pill);font-size:.7rem;font-weight:500;color:var(--tx2);border:1px solid var(--bd)}
-.p-actions{display:flex;gap:10px;flex-wrap:wrap}.p-actions .btn{flex:1;justify-content:center;min-width:100px}
+.techs span{background:rgba(255,255,255,.04);padding:3px 14px;border-radius:var(--pill);font-size:.7rem;font-weight:500;color:var(--tx2);border:1px solid var(--bd);word-break:break-word}
+.p-actions{display:flex;gap:10px;flex-wrap:wrap}.p-actions .btn{flex:1;min-width:100px}
 
 /* TIMELINE */
 .timeline{position:relative;padding-left:36px;max-width:780px}
@@ -133,34 +137,34 @@ section.alt{background:linear-gradient(180deg,rgba(22,27,34,.9),rgba(13,17,23,.4
 .t-co{color:var(--tx2);font-weight:500;font-size:.95rem;margin-bottom:10px}
 .t-item ul{list-style:none;color:var(--tx2);font-size:.92rem}
 .t-item li{padding:3px 0 3px 22px;position:relative}.t-item li::before{content:'▹';position:absolute;left:0;color:var(--a1)}
-.t-item .techs{margin:12px 0 0}.t-item .techs span{color:var(--tx2)}
+.t-item .techs{margin:12px 0 0}
 
 /* FORMAÇÃO / IDIOMAS */
-.formation-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.formation-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
 .formation-grid .card{padding:32px 28px}.formation-grid h4{font-size:1.1rem;font-weight:700}
 .inst{color:var(--tx2);font-weight:500;margin-bottom:6px}.meta{color:var(--tx3);font-size:.85rem;line-height:1.7}
-.lang-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:640px;margin:0 auto}
+.lang-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:640px;margin:0 auto;width:100%}
 .lang-grid .card{padding:30px 20px;text-align:center;border-radius:14px}
 .flag{font-size:2.4rem;margin-bottom:8px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.4))}.lang-grid b{font-size:1.1rem}.lang-grid p{color:var(--tx2);font-size:.9rem}
 
 /* FREELANCE */
-.freelance{max-width:700px;margin:0 auto;padding:48px 40px;text-align:center;border:1px solid transparent;background:linear-gradient(var(--bg2),var(--bg2)) padding-box,linear-gradient(135deg,rgba(34,197,94,.5),rgba(88,166,255,.25) 50%,rgba(255,255,255,.05)) border-box}
+.freelance{max-width:700px;margin:0 auto;padding:48px 40px;text-align:center;border:1px solid transparent;background:linear-gradient(var(--bg2),var(--bg2)) padding-box,linear-gradient(135deg,rgba(34,197,94,.5),rgba(88,166,255,.25) 50%,rgba(255,255,255,.05)) border-box;overflow:hidden}
 .freelance .f-ico{font-size:3rem;color:#22c55e;margin-bottom:14px;filter:drop-shadow(0 0 18px rgba(34,197,94,.5))}
 .freelance h3{font-size:1.4rem;font-weight:700;margin-bottom:8px}.freelance p{color:var(--tx2);margin-bottom:20px}.freelance p strong{color:var(--tx)}
 .services{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:28px}
-.services span{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid var(--bd);padding:6px 16px;border-radius:var(--pill);font-size:.8rem;font-weight:500;color:var(--tx2)}
-.services i{color:#22c55e;font-size:.75rem}
-.freelance .actions{justify-content:center}
+.services span{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid var(--bd);padding:6px 16px;border-radius:var(--pill);font-size:.8rem;font-weight:500;color:var(--tx2);word-break:break-word}
+.services i{color:#22c55e;font-size:.75rem;flex-shrink:0}
+.freelance .actions{justify-content:center;flex-wrap:wrap}
 
 /* CONTATO */
-.contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:900px;margin:0 auto}
-.contact-grid .card{padding:34px 18px;text-align:center;text-decoration:none;color:var(--tx);border-radius:14px}
+.contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:900px;margin:0 auto;width:100%}
+.contact-grid .card{padding:34px 18px;text-align:center;text-decoration:none;color:var(--tx);border-radius:14px;display:block}
 .contact-grid .iconbox{width:60px;height:60px;border-radius:18px;font-size:1.6rem;margin:0 auto 14px}
 .contact-grid .card:hover .iconbox{background:var(--grad);color:#fff}
-.contact-grid b{display:block;font-size:.9rem}.contact-grid small{display:block;color:var(--tx2);font-size:.8rem;word-break:break-all;margin-top:2px}
+.contact-grid b{display:block;font-size:.9rem}.contact-grid small{display:block;color:var(--tx2);font-size:.8rem;word-break:break-all;margin-top:2px;line-height:1.4}
 
 /* FOOTER / TOP */
-.footer{padding:48px 0 28px;border-top:1px solid var(--bd);text-align:center;color:var(--tx3);font-size:.85rem;background:linear-gradient(180deg,transparent,rgba(88,166,255,.04))}
+.footer{padding:48px 0 28px;border-top:1px solid var(--bd);text-align:center;color:var(--tx3);font-size:.85rem;background:linear-gradient(180deg,transparent,rgba(88,166,255,.04));max-width:100vw}
 .footer .social{justify-content:center;margin-bottom:16px}.footer .ico{width:42px;height:42px;font-size:1.05rem}
 .top{position:fixed;bottom:28px;right:28px;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--card);backdrop-filter:blur(12px);border:1px solid var(--bd);color:var(--tx2);cursor:pointer;opacity:0;visibility:hidden;transform:translateY(24px);transition:var(--t);z-index:999}
 .top.visible{opacity:1;visibility:visible;transform:none}.top:hover{color:var(--tx);border-color:var(--bdh)}
@@ -168,28 +172,147 @@ section.alt{background:linear-gradient(180deg,rgba(22,27,34,.9),rgba(13,17,23,.4
 /* MODAL */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(12px);z-index:2000;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:var(--t);padding:24px}
 .overlay.active{opacity:1;visibility:visible}
-.modal{background:linear-gradient(180deg,#1a2130,var(--bg2));border:1px solid var(--bd);border-radius:var(--r);max-width:720px;width:100%;max-height:90vh;overflow-y:auto;padding:44px;transform:scale(.94) translateY(24px);transition:var(--t);box-shadow:0 40px 120px rgba(0,0,0,.6)}
+.modal{background:linear-gradient(180deg,#1a2130,var(--bg2));border:1px solid var(--bd);border-radius:var(--r);max-width:720px;width:100%;max-height:90vh;overflow-y:auto;padding:44px;transform:scale(.94) translateY(24px);transition:var(--t);box-shadow:0 40px 120px rgba(0,0,0,.6);overflow-x:hidden}
 .overlay.active .modal{transform:none}
-.close{float:right;background:none;border:none;color:var(--tx2);font-size:1.6rem;cursor:pointer;transition:var(--t)}.close:hover{color:var(--tx);transform:rotate(90deg)}
-.modal h2{font-size:1.9rem;letter-spacing:-.02em;margin-bottom:8px}.m-meta{color:var(--tx2);margin-bottom:16px}
-.modal .techs{margin-bottom:18px}.m-desc{color:var(--tx2);line-height:1.8}.m-desc strong{color:var(--tx)}.m-desc p{margin-bottom:12px}
+.close{float:right;background:none;border:none;color:var(--tx2);font-size:1.6rem;cursor:pointer;transition:var(--t);line-height:1}.close:hover{color:var(--tx);transform:rotate(90deg)}
+.modal h2{font-size:1.9rem;letter-spacing:-.02em;margin-bottom:8px;word-break:break-word}.m-meta{color:var(--tx2);margin-bottom:16px}
+.modal .techs{margin-bottom:18px}.m-desc{color:var(--tx2);line-height:1.8;word-break:break-word}.m-desc strong{color:var(--tx)}.m-desc p{margin-bottom:12px}
 .m-desc ul{list-style:none;margin:12px 0}.m-desc li{padding:4px 0 4px 22px;position:relative}.m-desc li::before{content:'▹';position:absolute;left:0;color:var(--a1)}
 .m-desc .grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;font-size:.9rem}
-.m-desc a{color:var(--a1)}.m-actions{display:flex;gap:14px;margin-top:26px;flex-wrap:wrap}
+.m-desc a{color:var(--a1);word-break:break-all}.m-actions{display:flex;gap:14px;margin-top:26px;flex-wrap:wrap}
 
 /* ANIMAÇÃO */
 [data-animate]{opacity:0;transform:translateY(40px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
 [data-animate].visible{opacity:1;transform:none}
 
-@media(max-width:992px){.about-grid{grid-template-columns:1fr;gap:44px}.m-desc .grid{grid-template-columns:1fr}.contact-grid{grid-template-columns:repeat(2,1fr);max-width:500px}}
+/* ============ RESPONSIVO ============ */
+@media(max-width:992px){
+    .about-grid{grid-template-columns:1fr;gap:44px}
+    .m-desc .grid{grid-template-columns:1fr}
+    .contact-grid{grid-template-columns:repeat(2,1fr);max-width:600px}
+}
+
 @media(max-width:768px){
-.nav-links{position:fixed;top:0;right:-100%;width:280px;height:100vh;background:rgba(22,27,34,.97);backdrop-filter:blur(20px);flex-direction:column;justify-content:center;padding:40px;transition:var(--t);border-left:1px solid var(--bd)}
-.nav-links.open{right:0}.toggle{display:flex}
-.hero{padding:100px 0 40px;min-height:auto}.actions{flex-direction:column;align-items:stretch}.actions .btn{justify-content:center}.social{justify-content:center}
-.projects-grid{grid-template-columns:1fr}.timeline{padding-left:28px}.t-item{padding:20px}.t-item:hover{transform:none}.t-item::before{left:-30px;top:26px}
-.modal{padding:28px}.freelance{padding:32px 20px}section{padding:72px 0}}
-@media(max-width:480px){.hero-title{font-size:2.8rem}.contact-grid{gap:12px}.section-title{font-size:1.9rem}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}[data-animate]{opacity:1!important;transform:none!important}.progress{display:none}}
+    .container{padding:0 20px}
+    .navbar{padding:12px 0}
+    .nav-links{position:fixed;top:0;right:-100%;width:min(280px,85vw);height:100vh;background:rgba(22,27,34,.97);backdrop-filter:blur(20px);flex-direction:column;justify-content:center;padding:40px 28px;transition:var(--t);border-left:1px solid var(--bd);gap:22px;z-index:1000}
+    .nav-links.open{right:0}
+    .toggle{display:flex}
+
+    .hero{padding:100px 0 40px;min-height:auto}
+    .hero-content{max-width:100%}
+    .hero-title{font-size:clamp(2.4rem,11vw,3.4rem)}
+    .role{font-size:.95rem;padding:4px 16px}
+    .hero-desc{font-size:.98rem;max-width:100%}
+    .chips{gap:8px}
+    .chip{padding:6px 14px;font-size:.75rem}
+    .badges-top{gap:8px}
+    .pill{font-size:.7rem;padding:5px 14px 5px 12px}
+
+    .actions{flex-direction:column;align-items:stretch;width:100%}
+    .actions .btn{width:100%;padding:13px 24px}
+    .social{justify-content:center;margin-top:4px}
+    .ico{width:46px;height:46px;font-size:1.05rem}
+
+    section{padding:72px 0}
+    .section-header{margin-bottom:40px}
+    .section-subtitle{font-size:.95rem}
+
+    .about-text p{font-size:.98rem}
+    .photo{max-width:280px}
+
+    .skills-grid{grid-template-columns:1fr;gap:18px}
+    .skills-grid .card{padding:24px 22px}
+    .tags span{font-size:.75rem;padding:5px 12px}
+
+    .projects-grid{grid-template-columns:1fr;gap:24px}
+    .p-img{height:180px}
+    .p-body{padding:22px 22px 24px}
+    .p-body h3{font-size:1.1rem}
+    .p-body p{font-size:.9rem}
+    .techs span{font-size:.68rem;padding:3px 12px}
+    .p-actions{flex-direction:column}
+    .p-actions .btn{width:100%;min-width:0}
+
+    .timeline{padding-left:24px;max-width:100%}
+    .t-item{padding:20px;margin-bottom:20px}
+    .t-item:hover{transform:none}
+    .t-item::before{left:-28px;top:26px;width:14px;height:14px}
+    .t-item h4{font-size:1.05rem}
+    .t-item .t-co{font-size:.88rem}
+    .t-item ul,.t-item li{font-size:.88rem}
+
+    .formation-grid{grid-template-columns:1fr;gap:18px}
+    .formation-grid .card{padding:26px 22px}
+
+    .lang-grid{grid-template-columns:1fr;max-width:100%;gap:16px}
+
+    .freelance{padding:32px 20px}
+    .freelance h3{font-size:1.2rem}
+    .freelance p{font-size:.95rem}
+    .services{gap:8px}
+    .services span{font-size:.72rem;padding:5px 12px}
+    .freelance .actions{flex-direction:column;width:100%}
+    .freelance .actions .btn{width:100%;padding:12px 16px;font-size:.82rem}
+
+    .contact-grid{grid-template-columns:repeat(2,1fr);max-width:100%;gap:14px}
+    .contact-grid .card{padding:24px 14px}
+    .contact-grid .iconbox{width:50px;height:50px;font-size:1.35rem;border-radius:14px}
+    .contact-grid b{font-size:.82rem}
+    .contact-grid small{font-size:.7rem}
+
+    .modal{padding:28px 22px;border-radius:16px}
+    .modal h2{font-size:1.4rem}
+    .m-desc{font-size:.92rem}
+    .m-desc .grid{grid-template-columns:1fr}
+    .m-actions{flex-direction:column}
+    .m-actions .btn{width:100%}
+
+    .top{bottom:20px;right:20px;width:44px;height:44px}
+    .footer{padding:36px 0 24px}
+}
+
+@media(max-width:480px){
+    .container{padding:0 16px}
+    .hero{padding:90px 0 32px}
+    .hero-title{font-size:clamp(2.2rem,12vw,2.8rem)}
+    .role{font-size:.85rem;padding:3px 12px}
+    .hero-desc{font-size:.92rem}
+    .chip{font-size:.7rem;padding:5px 12px}
+    .section-title{font-size:clamp(1.7rem,7.5vw,2.1rem)}
+    .section-subtitle{font-size:.88rem}
+    .about-text p{font-size:.94rem}
+    .photo{max-width:240px}
+
+    .contact-grid{grid-template-columns:1fr;gap:12px}
+    .contact-grid .card{padding:20px 16px}
+
+    .p-body{padding:20px 18px}
+    .p-body h3{font-size:1rem}
+    .p-body p{font-size:.85rem}
+
+    .t-item{padding:16px}
+    .t-item h4{font-size:.98rem}
+    .t-item .t-co{font-size:.82rem}
+    .t-item ul,.t-item li{font-size:.82rem}
+
+    .freelance{padding:26px 16px}
+    .freelance h3{font-size:1.05rem}
+    .freelance p{font-size:.88rem}
+    .services span{font-size:.68rem;padding:4px 10px}
+
+    .modal{padding:22px 16px}
+    .modal h2{font-size:1.2rem}
+    .m-desc{font-size:.85rem}
+
+    .top{bottom:16px;right:16px;width:42px;height:42px}
+}
+
+@media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+    [data-animate]{opacity:1!important;transform:none!important}
+    .progress{display:none}
+}
 </style>
 </head>
 <body>
@@ -199,7 +322,15 @@ section.alt{background:linear-gradient(180deg,rgba(22,27,34,.9),rgba(13,17,23,.4
   <a href="#home" class="logo"><span>BS</span></a>
   <button class="toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
   <ul class="nav-links" id="navLinks">
-   <li><a href="#home" class="active">Início</a></li><li><a href="#sobre">Sobre</a></li><li><a href="#habilidades">Habilidades</a></li><li><a href="#projetos">Projetos</a></li><li><a href="#experiencia">Experiência</a></li><li><a href="#formacao">Formação</a></li><li><a href="#idiomas">Idiomas</a></li><li><a href="#freelance">Freelance</a></li><li><a href="#contato">Contato</a></li>
+   <li><a href="#home" class="active">Início</a></li>
+   <li><a href="#sobre">Sobre</a></li>
+   <li><a href="#habilidades">Habilidades</a></li>
+   <li><a href="#projetos">Projetos</a></li>
+   <li><a href="#experiencia">Experiência</a></li>
+   <li><a href="#formacao">Formação</a></li>
+   <li><a href="#idiomas">Idiomas</a></li>
+   <li><a href="#freelance">Freelance</a></li>
+   <li><a href="#contato">Contato</a></li>
   </ul>
  </div>
 </header>
@@ -217,7 +348,10 @@ section.alt{background:linear-gradient(180deg,rgba(22,27,34,.9),rgba(13,17,23,.4
   <span class="role" id="typingRole">Desenvolvedor Full Stack</span>
   <p class="hero-desc">Maior afinidade por <b>Java</b> e <b>Spring Boot</b>, e interesse em <b>IA</b>, automação e desenvolvimento de sistemas.</p>
   <div class="chips">
-   <span class="chip"><i class="fa-brands fa-java"></i> Java</span><span class="chip"><i class="fa-solid fa-leaf"></i> Spring Boot</span><span class="chip"><i class="fa-solid fa-layer-group"></i> Full Stack</span><span class="chip"><i class="fa-solid fa-brain"></i> IA</span>
+   <span class="chip"><i class="fa-brands fa-java"></i> Java</span>
+   <span class="chip"><i class="fa-solid fa-leaf"></i> Spring Boot</span>
+   <span class="chip"><i class="fa-solid fa-layer-group"></i> Full Stack</span>
+   <span class="chip"><i class="fa-solid fa-brain"></i> IA</span>
   </div>
   <div class="actions">
    <a href="#projetos" class="btn btn-p"><i class="fa-solid fa-rocket"></i> Ver projetos</a>
@@ -253,10 +387,22 @@ section.alt{background:linear-gradient(180deg,rgba(22,27,34,.9),rgba(13,17,23,.4
  <div class="container">
   <div class="section-header centered"><span class="tag">Habilidades e noções</span><h2 class="section-title">Hard <span>skills</span></h2></div>
   <div class="skills-grid">
-   <div class="card" data-animate><h3 class="cat"><i class="fa-solid fa-server"></i>Backend</h3><div class="tags"><span>Java</span><span>Spring Boot</span><span>Python</span><span>Linguagem C</span></div></div>
-   <div class="card" data-animate data-delay="100"><h3 class="cat"><i class="fa-solid fa-code"></i>Frontend</h3><div class="tags"><span>HTML</span><span>CSS</span><span>TypeScript</span><span>React</span></div></div>
-   <div class="card" data-animate data-delay="200"><h3 class="cat"><i class="fa-solid fa-database"></i>Banco de Dados</h3><div class="tags"><span>MySQL</span><span>PostgreSQL</span></div></div>
-   <div class="card" data-animate data-delay="300"><h3 class="cat"><i class="fa-solid fa-cloud"></i>DevOps</h3><div class="tags"><span>Docker</span><span>Git</span><span>GitHub</span></div></div>
+   <div class="card" data-animate>
+    <h3 class="cat"><i class="fa-solid fa-server"></i>Backend</h3>
+    <div class="tags"><span>Java</span><span>Spring Boot</span><span>Python</span><span>TypeScript</span><span>Linguagem C</span></div>
+   </div>
+   <div class="card" data-animate data-delay="100">
+    <h3 class="cat"><i class="fa-solid fa-code"></i>Frontend &amp; Mobile</h3>
+    <div class="tags"><span>HTML</span><span>CSS</span><span>TypeScript</span><span>React</span><span>Flutter</span></div>
+   </div>
+   <div class="card" data-animate data-delay="200">
+    <h3 class="cat"><i class="fa-solid fa-database"></i>Banco de Dados</h3>
+    <div class="tags"><span>MySQL</span><span>PostgreSQL</span></div>
+   </div>
+   <div class="card" data-animate data-delay="300">
+    <h3 class="cat"><i class="fa-solid fa-cloud"></i>DevOps</h3>
+    <div class="tags"><span>Docker</span><span>Git</span><span>GitHub</span></div>
+   </div>
   </div>
  </div>
 </section>
@@ -267,32 +413,51 @@ section.alt{background:linear-gradient(180deg,rgba(22,27,34,.9),rgba(13,17,23,.4
   <div class="projects-grid">
 
    <article class="card project" data-animate>
-    <div class="p-img"><img src="assets/images/finance.png" alt="Finance Control - Sistema de controle financeiro" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" /><div class="fallback"><i class="fa-solid fa-coins"></i></div></div>
+    <div class="p-img">
+     <img src="assets/images/finance.png" alt="Finance Control" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+     <div class="fallback"><i class="fa-solid fa-coins"></i></div>
+    </div>
     <div class="p-body">
-     <span class="star">★ Destaque</span><h3>Finance Control</h3>
+     <span class="star">★ Destaque</span>
+     <h3>Finance Control</h3>
      <p>Sistema completo de controle financeiro pessoal que permite gerenciar receitas e despesas de forma simples e intuitiva.</p>
      <div class="techs"><span>Java</span><span>Spring Boot</span><span>Python</span><span>MySQL</span><span>HTML</span><span>CSS</span><span>JS</span></div>
-     <div class="p-actions"><a href="https://github.com/BeSinhorelli/Finance-control" target="_blank" rel="noopener" class="btn btn-s btn-sm"><i class="fa-brands fa-github"></i> GitHub</a><button class="btn btn-p btn-sm" onclick="openModal('finance')"><i class="fa-regular fa-eye"></i> Ver projeto</button></div>
+     <div class="p-actions">
+      <a href="https://github.com/BeSinhorelli/Finance-control" target="_blank" rel="noopener" class="btn btn-s btn-sm"><i class="fa-brands fa-github"></i> GitHub</a>
+      <button class="btn btn-p btn-sm" onclick="openModal('finance')"><i class="fa-regular fa-eye"></i> Ver projeto</button>
+     </div>
     </div>
    </article>
 
    <article class="card project" data-animate data-delay="100">
-    <div class="p-img"><img src="assets/images/game.png" alt="GameScoreManager - Sistema web em Java Spring" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" /><div class="fallback"><i class="fa-solid fa-gamepad"></i></div></div>
+    <div class="p-img">
+     <img src="assets/images/game.png" alt="GameScoreManager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+     <div class="fallback"><i class="fa-solid fa-gamepad"></i></div>
+    </div>
     <div class="p-body">
      <h3>GameScoreManager-SpringBoot</h3>
      <p>API Rest desenvolvida em Java Spring Boot para gerenciamento de jogos, players e scores. Adaptado de uma aplicação desktop Swing.</p>
      <div class="techs"><span>Java</span><span>Spring Boot</span><span>MySQL</span><span>HTML</span><span>CSS</span><span>JS</span></div>
-     <div class="p-actions"><a href="https://github.com/BeSinhorelli/GameScoreManager_SpringBoot" target="_blank" rel="noopener" class="btn btn-s btn-sm"><i class="fa-brands fa-github"></i> GitHub</a><button class="btn btn-p btn-sm" onclick="openModal('gamescore')"><i class="fa-regular fa-eye"></i> Ver projeto</button></div>
+     <div class="p-actions">
+      <a href="https://github.com/BeSinhorelli/GameScoreManager_SpringBoot" target="_blank" rel="noopener" class="btn btn-s btn-sm"><i class="fa-brands fa-github"></i> GitHub</a>
+      <button class="btn btn-p btn-sm" onclick="openModal('gamescore')"><i class="fa-regular fa-eye"></i> Ver projeto</button>
+     </div>
     </div>
    </article>
 
    <article class="card project" data-animate data-delay="200">
-    <div class="p-img"><img src="assets/images/study.png" alt="StudyTrack - Sistema de gerenciamento de estudos" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" /><div class="fallback"><i class="fa-solid fa-book-open"></i></div></div>
+    <div class="p-img">
+     <img src="assets/images/study.png" alt="StudyTrack" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+     <div class="fallback"><i class="fa-solid fa-book-open"></i></div>
+    </div>
     <div class="p-body">
      <h3>StudyTrack</h3>
-     <p>Plataforma pessoal de gerenciamento de estudos que permite organizar matérias, tarefas, sessões, metas e acompanhar sua produtividade de forma completa.</p>
+     <p>Plataforma pessoal de gerenciamento de estudos que permite organizar matérias, tarefas, sessões, metas e acompanhar sua produtividade.</p>
      <div class="techs"><span>TypeScript</span><span>React</span><span>Docker</span><span>HTML</span><span>CSS</span><span>SQLite</span></div>
-     <div class="p-actions"><a href="https://github.com/BeSinhorelli/StudyTrack" target="_blank" rel="noopener" class="btn btn-s btn-sm"><i class="fa-brands fa-github"></i> GitHub</a><button class="btn btn-p btn-sm" onclick="openModal('studytrack')"><i class="fa-regular fa-eye"></i> Ver projeto</button></div>
+     <div class="p-actions">
+      <a href="https://github.com/BeSinhorelli/StudyTrack" target="_blank" rel="noopener" class="btn btn-s btn-sm"><i class="fa-brands fa-github"></i> GitHub</a>
+      <button class="btn btn-p btn-sm" onclick="openModal('studytrack')"><i class="fa-regular fa-eye"></i> Ver projeto</button>
+     </div>
     </div>
    </article>
 
@@ -304,21 +469,52 @@ section.alt{background:linear-gradient(180deg,rgba(22,27,34,.9),rgba(13,17,23,.4
  <div class="container">
   <div class="section-header"><span class="tag">Experiência</span><h2 class="section-title">Minha <span>trajetória</span></h2><p class="section-subtitle">Experiências profissionais</p></div>
   <div class="timeline">
+
    <div class="card t-item" data-animate>
-    <div class="t-date">Ago 2026 — Presente</div><h4>Estagiário de Apoio Técnico N1</h4><div class="t-co">PAYER · TECNOPUC</div>
-    <ul><li>Cadastro e configuração de aplicações nos ambientes dos clientes</li><li>Implantação de aplicações de forma presencial ou remota</li><li>Atualização e manutenção de aplicações nos clientes</li><li>Atendimento e suporte aos clientes em dúvidas e problemas relacionados ao funcionamento das aplicações</li><li>Acompanhamento, controle e resolução de chamados de serviço</li><li>Análise e identificação de erros nas aplicações</li><li>Registro e encaminhamento de incidentes para as equipes técnicas responsáveis</li><li>Suporte de primeiro nível, buscando solucionar demandas de forma eficiente e reduzir escalonamentos</li></ul>
-    <div class="techs"><span>Competências usadas: Suporte Técnico e Atendimento ao cliente</span></div>
+    <div class="t-date">Ago 2026 — Presente</div>
+    <h4>Estagiário de Apoio Técnico N1</h4>
+    <div class="t-co">PAYER · TECNOPUC</div>
+    <ul>
+     <li>Cadastro e configuração de aplicações nos ambientes dos clientes</li>
+     <li>Implantação de aplicações de forma presencial ou remota</li>
+     <li>Atualização e manutenção de aplicações nos clientes</li>
+     <li>Atendimento e suporte aos clientes em dúvidas e problemas relacionados ao funcionamento das aplicações</li>
+     <li>Acompanhamento, controle e resolução de chamados de serviço</li>
+     <li>Análise e identificação de erros nas aplicações</li>
+     <li>Registro e encaminhamento de incidentes para as equipes técnicas responsáveis</li>
+     <li>Suporte de primeiro nível, buscando solucionar demandas de forma eficiente e reduzir escalonamentos</li>
+    </ul>
+    <div class="techs"><span>Competências: Suporte Técnico e Atendimento ao cliente</span></div>
    </div>
+
    <div class="card t-item" data-animate>
-    <div class="t-date">Mai 2026 — Jul 2026 · 3 meses</div><h4>Estagiário de TI</h4><div class="t-co">PUCRS · IDEIA - Laboratório de Alto Desempenho</div>
-    <ul><li>Monitoramento de tarefas por meio de aplicações web de gerenciamento de projetos</li><li>Apoio na elaboração, melhoria de sistemas, registros e automatizações de processos da área</li><li>Acompanhamento e registro de processos de compras de equipamentos de TI</li><li>Melhoria do sistema interno <strong>LAD_Accounting</strong></li></ul>
-    <div class="techs"><span>Competências usadas: Python, HTML, CSS, SQLite, Bash/ShellScript e suporte técnico</span></div>
+    <div class="t-date">Mai 2026 — Jul 2026 · 3 meses</div>
+    <h4>Estagiário de TI</h4>
+    <div class="t-co">PUCRS · IDEIA - Laboratório de Alto Desempenho</div>
+    <ul>
+     <li>Monitoramento de tarefas por meio de aplicações web de gerenciamento de projetos</li>
+     <li>Apoio na elaboração, melhoria de sistemas, registros e automatizações de processos da área</li>
+     <li>Acompanhamento e registro de processos de compras de equipamentos de TI</li>
+     <li>Melhoria do sistema interno <strong>LAD_Accounting</strong></li>
+    </ul>
+    <div class="techs"><span>Competências: Python, HTML, CSS, SQLite, Bash/ShellScript e suporte técnico</span></div>
    </div>
+
    <div class="card t-item" data-animate>
-    <div class="t-date">Jun 2025 — Out 2025 · 5 meses</div><h4>Estagiário de Laboratório</h4><div class="t-co">LABELO · Setor de Telecomunicações · PUCRS</div>
-    <ul><li>Elaboração de relatórios técnicos</li><li>Revisão e atualização de documentação conforme feedback de clientes</li><li>Requisição de emendas e gestão de amostras</li><li>Comunicação com clientes e equipe interna via e-mail</li><li>Auxílio a funcionários efetivos em rotinas técnicas de laboratório</li><li>Atuação em laboratório com acreditação ISO/IEC 17025:2017</li></ul>
-    <div class="techs"><span>Competências usadas: Comunicação, Excel e Atendimento ao cliente</span></div>
+    <div class="t-date">Jun 2025 — Out 2025 · 5 meses</div>
+    <h4>Estagiário de Laboratório</h4>
+    <div class="t-co">LABELO · Setor de Telecomunicações · PUCRS</div>
+    <ul>
+     <li>Elaboração de relatórios técnicos</li>
+     <li>Revisão e atualização de documentação conforme feedback de clientes</li>
+     <li>Requisição de emendas e gestão de amostras</li>
+     <li>Comunicação com clientes e equipe interna via e-mail</li>
+     <li>Auxílio a funcionários efetivos em rotinas técnicas de laboratório</li>
+     <li>Atuação em laboratório com acreditação ISO/IEC 17025:2017</li>
+    </ul>
+    <div class="techs"><span>Competências: Comunicação, Excel e Atendimento ao cliente</span></div>
    </div>
+
   </div>
  </div>
 </section>
@@ -327,9 +523,24 @@ section.alt{background:linear-gradient(180deg,rgba(22,27,34,.9),rgba(13,17,23,.4
  <div class="container">
   <div class="section-header centered"><span class="tag">Formação</span><h2 class="section-title">Minha <span>educação</span></h2><p class="section-subtitle">Cursos e instituições que fazem/fizeram parte da minha jornada</p></div>
   <div class="formation-grid">
-   <div class="card" data-animate><div class="iconbox"><i class="fa-solid fa-graduation-cap"></i></div><h4>Tecnólogo em Análise e Desenvolvimento de Sistemas</h4><div class="inst">PUCRS</div><div class="meta">Período: Jul 2025 — Dez 2027<br>Situação: Cursando</div></div>
-   <div class="card" data-animate data-delay="100"><div class="iconbox"><i class="fa-solid fa-laptop-code"></i></div><h4>Técnico em Informática</h4><div class="inst">Escola Técnica Mesquita</div><div class="meta">Período: Fev 2023 — Dez 2024<br>Situação: Concluído</div></div>
-   <div class="card" data-animate data-delay="200"><div class="iconbox"><i class="fa-solid fa-bolt"></i></div><h4>Curso de Elétrica NR10</h4><div class="inst">Escola Técnica Mesquita</div><div class="meta">Período: Ago 2025 — Dez 2025<br>Situação: Cursando</div></div>
+   <div class="card" data-animate>
+    <div class="iconbox"><i class="fa-solid fa-graduation-cap"></i></div>
+    <h4>Tecnólogo em Análise e Desenvolvimento de Sistemas</h4>
+    <div class="inst">PUCRS</div>
+    <div class="meta">Período: Jul 2025 — Dez 2027<br>Situação: Cursando</div>
+   </div>
+   <div class="card" data-animate data-delay="100">
+    <div class="iconbox"><i class="fa-solid fa-laptop-code"></i></div>
+    <h4>Técnico em Informática</h4>
+    <div class="inst">Escola Técnica Mesquita</div>
+    <div class="meta">Período: Fev 2023 — Dez 2024<br>Situação: Concluído</div>
+   </div>
+   <div class="card" data-animate data-delay="200">
+    <div class="iconbox"><i class="fa-solid fa-bolt"></i></div>
+    <h4>Curso de Elétrica NR10</h4>
+    <div class="inst">Escola Técnica Mesquita</div>
+    <div class="meta">Período: Ago 2025 — Dez 2025<br>Situação: Cursando</div>
+   </div>
   </div>
  </div>
 </section>
@@ -351,8 +562,17 @@ section.alt{background:linear-gradient(180deg,rgba(22,27,34,.9),rgba(13,17,23,.4
    <div class="f-ico"><i class="fa-solid fa-handshake"></i></div>
    <h3>Vamos construir algo juntos?</h3>
    <p>Desenvolvo <strong>sistemas personalizados</strong> para atender às necessidades do seu negócio:</p>
-   <div class="services"><span><i class="fa-solid fa-gear"></i> Sistemas sob medida</span><span><i class="fa-solid fa-arrows-spin"></i> Automação de processos</span><span><i class="fa-solid fa-database"></i> Gestão de dados e relatórios</span><span><i class="fa-solid fa-rocket"></i> Otimização e performance</span><span><i class="fa-solid fa-cloud"></i> Soluções web e APIs</span></div>
-   <div class="actions"><a href="#contato" class="btn btn-p"><i class="fa-regular fa-paper-plane"></i> Fale comigo</a><a href="mailto:bernardosinhorelli348@gmail.com" class="btn btn-s"><i class="fa-regular fa-envelope"></i> bernardosinhorelli348@gmail.com</a></div>
+   <div class="services">
+    <span><i class="fa-solid fa-gear"></i> Sistemas sob medida</span>
+    <span><i class="fa-solid fa-arrows-spin"></i> Automação de processos</span>
+    <span><i class="fa-solid fa-database"></i> Gestão de dados e relatórios</span>
+    <span><i class="fa-solid fa-rocket"></i> Otimização e performance</span>
+    <span><i class="fa-solid fa-cloud"></i> Soluções web e APIs</span>
+   </div>
+   <div class="actions">
+    <a href="#contato" class="btn btn-p"><i class="fa-regular fa-paper-plane"></i> Fale comigo</a>
+    <a href="mailto:bernardosinhorelli348@gmail.com" class="btn btn-s"><i class="fa-regular fa-envelope"></i> bernardosinhorelli348@gmail.com</a>
+   </div>
   </div>
  </div>
 </section>
@@ -361,92 +581,215 @@ section.alt{background:linear-gradient(180deg,rgba(22,27,34,.9),rgba(13,17,23,.4
  <div class="container">
   <div class="section-header centered"><span class="tag">Contato</span><h2 class="section-title">Vamos <span>conversar</span></h2><p class="section-subtitle">Entre em contato comigo por qualquer um dos canais abaixo</p></div>
   <div class="contact-grid">
-   <a href="https://github.com/BeSinhorelli" target="_blank" rel="noopener" class="card" data-animate><div class="iconbox"><i class="fa-brands fa-github"></i></div><b>GitHub</b><small>github.com/BeSinhorelli</small></a>
-   <a href="https://www.linkedin.com/in/bernardosinhorelli/" target="_blank" rel="noopener" class="card" data-animate data-delay="100"><div class="iconbox"><i class="fa-brands fa-linkedin-in"></i></div><b>LinkedIn</b><small>linkedin.com/in/bernardosinhorelli</small></a>
-   <a href="mailto:bernardosinhorelli348@gmail.com" class="card" data-animate data-delay="200"><div class="iconbox"><i class="fa-regular fa-envelope"></i></div><b>E-mail</b><small>bernardosinhorelli348@gmail.com</small></a>
-   <a href="tel:+5551993422584" class="card" data-animate data-delay="300"><div class="iconbox"><i class="fa-solid fa-phone"></i></div><b>Celular</b><small>(51) 99342-2584</small></a>
+   <a href="https://github.com/BeSinhorelli" target="_blank" rel="noopener" class="card" data-animate>
+    <div class="iconbox"><i class="fa-brands fa-github"></i></div>
+    <b>GitHub</b><small>github.com/BeSinhorelli</small>
+   </a>
+   <a href="https://www.linkedin.com/in/bernardosinhorelli/" target="_blank" rel="noopener" class="card" data-animate data-delay="100">
+    <div class="iconbox"><i class="fa-brands fa-linkedin-in"></i></div>
+    <b>LinkedIn</b><small>linkedin.com/in/bernardosinhorelli</small>
+   </a>
+   <a href="mailto:bernardosinhorelli348@gmail.com" class="card" data-animate data-delay="200">
+    <div class="iconbox"><i class="fa-regular fa-envelope"></i></div>
+    <b>E-mail</b><small>bernardosinhorelli348@gmail.com</small>
+   </a>
+   <a href="tel:+5551993422584" class="card" data-animate data-delay="300">
+    <div class="iconbox"><i class="fa-solid fa-phone"></i></div>
+    <b>Celular</b><small>(51) 99342-2584</small>
+   </a>
   </div>
  </div>
 </section>
 </main>
 
-<footer class="footer"><div class="container">
- <div class="social"><a href="https://github.com/BeSinhorelli" target="_blank" rel="noopener" class="ico" aria-label="GitHub"><i class="fa-brands fa-github"></i></a><a href="https://www.linkedin.com/in/bernardosinhorelli/" target="_blank" rel="noopener" class="ico" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a></div>
- <p>&copy; 2026 Bernardo Sinhorelli</p>
-</div></footer>
+<footer class="footer">
+ <div class="container">
+  <div class="social">
+   <a href="https://github.com/BeSinhorelli" target="_blank" rel="noopener" class="ico" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+   <a href="https://www.linkedin.com/in/bernardosinhorelli/" target="_blank" rel="noopener" class="ico" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+  </div>
+  <p>&copy; 2026 Bernardo Sinhorelli</p>
+ </div>
+</footer>
 
 <button class="top" id="scrollTop" aria-label="Voltar ao topo"><i class="fa-solid fa-arrow-up"></i></button>
 <div class="progress" id="progress"></div>
 
 <div class="overlay" id="projectModal" role="dialog" aria-modal="true" aria-label="Detalhes do projeto">
- <div class="modal"><button class="close" onclick="closeModal()" aria-label="Fechar"><i class="fa-solid fa-xmark"></i></button><div id="modalContent"></div></div>
+ <div class="modal">
+  <button class="close" onclick="closeModal()" aria-label="Fechar"><i class="fa-solid fa-xmark"></i></button>
+  <div id="modalContent"></div>
+ </div>
 </div>
 
 <script>
-const gh=(u)=>`<p><strong>GitHub:</strong> <a href="${u}" target="_blank" rel="noopener">${u.replace('https://','')}</a></p>`;
+const gh=u=>`<p><strong>GitHub:</strong> <a href="${u}" target="_blank" rel="noopener">${u.replace('https://','')}</a></p>`;
+
 const projects={
-finance:{title:'Finance Control',techs:['Java','Spring Boot','Python','MySQL','HTML','CSS','JS'],github:'https://github.com/BeSinhorelli/Finance-control',desc:'',details:`
-<p>O <strong>Finance Control</strong> é um sistema completo de controle financeiro pessoal que permite aos usuários gerenciar receitas e despesas de forma simples e intuitiva.</p>
-<p>A aplicação combina diferentes tecnologias:</p>
-<ul><li><strong>⚙️ Java + Spring Boot</strong> → Backend principal (API REST)</li><li><strong>🧠 Python (Flask)</strong> → Análise inteligente de dados financeiros</li><li><strong>🗄️ MySQL</strong> → Persistência de dados</li><li><strong>🌐 Frontend Web</strong> → HTML, CSS e JavaScript</li><li><strong>📊 Chart.js</strong> → Visualização de dados com gráficos</li></ul>
-<p><strong>🎯 Funcionalidades:</strong></p>
-<ul class="grid"><li>Autenticação de usuários (cadastro e login)</li><li>CRUD completo de transações (receitas e despesas)</li><li>Organização por categorias (Alimentação, Transporte, Lazer, etc.)</li><li>Dashboard interativo com gráficos dinâmicos</li><li>Filtros por período (semana, mês e ano)</li><li>Insights financeiros inteligentes gerados por Python</li><li>Visualização da evolução mensal dos gastos</li><li>Interface responsiva e moderna</li></ul>`},
-gamescore:{title:'GameScoreManager Spring Boot',techs:['Java','Spring Boot','MySQL','HTML','CSS','JS'],github:'https://github.com/BeSinhorelli/GameScoreManager_SpringBoot',desc:'',details:`
-<p>Uma <strong>API Rest</strong> desenvolvida em <strong>Java Spring Boot</strong> para gerenciamento de jogos, players e scores.</p>
-<p>Sistema originalmente adaptado de uma aplicação desktop Swing com JFrame para uma arquitetura web moderna.</p>
-<p><strong>✨ Funcionalidades:</strong></p>
-<ul class="grid"><li>CRUD Completo – Create, Read, Update, Delete para todas as entidades</li><li>API REST – requisições HTTP padrão REST</li><li>Banco de dados MySQL – armazenamento com Spring Data JPA no XAMPP</li><li>Sistema web completo – feito em HTML, CSS e JavaScript</li></ul>`},
-studytrack:{title:'StudyTrack',techs:['Node.js','TypeScript','React','Prisma','SQLite','Docker','GitHub Actions','HTML','CSS'],github:'https://github.com/BeSinhorelli/StudyTrack',desc:'Plataforma pessoal de gerenciamento de estudos — organize matérias, tarefas, sessões, metas e acompanhe sua produtividade.',details:`
-<p><strong>StudyTrack</strong> é uma plataforma pessoal de gerenciamento de estudos que permite organizar matérias, tarefas, sessões, metas e acompanhar sua produtividade de forma completa.</p>
-<p><strong>🛠️ Stack:</strong></p>
-<ul><li><strong>Backend:</strong> Node.js · Express · TypeScript · Prisma · SQLite · JWT · bcrypt · Zod · Vitest + Supertest</li><li><strong>Frontend:</strong> React · Vite · TypeScript · React Router · Axios · Recharts · CSS Modules</li><li><strong>DevOps:</strong> Docker · GitHub Actions</li></ul>
-<p><strong>🏗️ Arquitetura:</strong> Route → Controller → Service → Prisma → SQLite</p>
-<p><strong>🎯 Funcionalidades:</strong></p>
-<ul class="grid"><li>📊 Dashboard — horas estudadas, tarefas, metas, streak e gráficos</li><li>📚 Matérias — áreas de estudo com cores personalizadas</li><li>🏷️ Tópicos — subdivisões com status (não iniciado / em progresso / concluído)</li><li>✅ Tarefas — prioridade, prazo e status; filtro de atrasadas</li><li>⏱️ Sessões — duração calculada automaticamente</li><li>🎯 Metas — progresso derivado das sessões reais</li><li>📝 Anotações — livres ou vinculadas a matéria/tópico</li><li>🗓️ Planos — períodos de estudo com início e fim</li><li>👤 Perfil — editar nome/email e trocar senha</li></ul>
-<p><strong>🔒 Segurança:</strong> senhas com bcrypt, JWT com expiração, rate limiting no login, Helmet, validação com Zod e isolamento por usuário em todas as queries.</p>
-<p><strong>🧪 Testes:</strong> 96 testes (unitários + integração) cobrindo auth, isolamento entre usuários e CRUD de todos os módulos.</p>`}};
+finance:{
+ title:'Finance Control',
+ techs:['Java','Spring Boot','Python','MySQL','HTML','CSS','JS'],
+ github:'https://github.com/BeSinhorelli/Finance-control',
+ desc:'Sistema completo de controle financeiro pessoal que permite gerenciar receitas e despesas de forma simples e intuitiva.',
+ details:`
+ <p>O <strong>Finance Control</strong> é um sistema completo de controle financeiro pessoal que permite aos usuários gerenciar receitas e despesas de forma simples e intuitiva.</p>
+ <p>A aplicação combina diferentes tecnologias:</p>
+ <ul>
+  <li><strong>⚙️ Java + Spring Boot</strong> → Backend principal (API REST)</li>
+  <li><strong>🧠 Python (Flask)</strong> → Análise inteligente de dados financeiros</li>
+  <li><strong>🗄️ MySQL</strong> → Persistência de dados</li>
+  <li><strong>🌐 Frontend Web</strong> → HTML, CSS e JavaScript</li>
+  <li><strong>📊 Chart.js</strong> → Visualização de dados com gráficos</li>
+ </ul>
+ <p><strong>🎯 Funcionalidades:</strong></p>
+ <ul class="grid">
+  <li>Autenticação de usuários (cadastro e login)</li>
+  <li>CRUD completo de transações (receitas e despesas)</li>
+  <li>Organização por categorias (Alimentação, Transporte, Lazer, etc.)</li>
+  <li>Dashboard interativo com gráficos dinâmicos</li>
+  <li>Filtros por período (semana, mês e ano)</li>
+  <li>Insights financeiros inteligentes gerados por Python</li>
+  <li>Visualização da evolução mensal dos gastos</li>
+  <li>Interface responsiva e moderna</li>
+ </ul>`
+},
+gamescore:{
+ title:'GameScoreManager Spring Boot',
+ techs:['Java','Spring Boot','MySQL','HTML','CSS','JS'],
+ github:'https://github.com/BeSinhorelli/GameScoreManager_SpringBoot',
+ desc:'API Rest desenvolvida em Java Spring Boot para gerenciamento de jogos, players e scores.',
+ details:`
+ <p>Uma <strong>API Rest</strong> desenvolvida em <strong>Java Spring Boot</strong> para gerenciamento de jogos, players e scores.</p>
+ <p>Sistema originalmente adaptado de uma aplicação desktop Swing com JFrame para uma arquitetura web moderna.</p>
+ <p><strong>✨ Funcionalidades:</strong></p>
+ <ul class="grid">
+  <li>CRUD Completo – Create, Read, Update, Delete para todas as entidades</li>
+  <li>API REST – requisições HTTP padrão REST</li>
+  <li>Banco de dados MySQL – armazenamento com Spring Data JPA no XAMPP</li>
+  <li>Sistema web completo – feito em HTML, CSS e JavaScript</li>
+ </ul>`
+},
+studytrack:{
+ title:'StudyTrack',
+ techs:['Node.js','TypeScript','React','Prisma','SQLite','Docker','GitHub Actions','HTML','CSS'],
+ github:'https://github.com/BeSinhorelli/StudyTrack',
+ desc:'Plataforma pessoal de gerenciamento de estudos — organize matérias, tarefas, sessões, metas e acompanhe sua produtividade.',
+ details:`
+ <p><strong>StudyTrack</strong> é uma plataforma pessoal de gerenciamento de estudos que permite organizar matérias, tarefas, sessões, metas e acompanhar sua produtividade de forma completa.</p>
+ <p><strong>🛠️ Stack:</strong></p>
+ <ul>
+  <li><strong>Backend:</strong> Node.js · Express · TypeScript · Prisma · SQLite · JWT · bcrypt · Zod · Vitest + Supertest</li>
+  <li><strong>Frontend:</strong> React · Vite · TypeScript · React Router · Axios · Recharts · CSS Modules</li>
+  <li><strong>DevOps:</strong> Docker · GitHub Actions</li>
+ </ul>
+ <p><strong>🏗️ Arquitetura:</strong> Route → Controller → Service → Prisma → SQLite</p>
+ <p><strong>🎯 Funcionalidades:</strong></p>
+ <ul class="grid">
+  <li>📊 Dashboard — horas estudadas, tarefas, metas, streak e gráficos</li>
+  <li>📚 Matérias — áreas de estudo com cores personalizadas</li>
+  <li>🏷️ Tópicos — subdivisões com status (não iniciado / em progresso / concluído)</li>
+  <li>✅ Tarefas — prioridade, prazo e status; filtro de atrasadas</li>
+  <li>⏱️ Sessões — duração calculada automaticamente</li>
+  <li>🎯 Metas — progresso derivado das sessões reais</li>
+  <li>📝 Anotações — livres ou vinculadas a matéria/tópico</li>
+  <li>🗓️ Planos — períodos de estudo com início e fim</li>
+  <li>👤 Perfil — editar nome/email e trocar senha</li>
+ </ul>
+ <p><strong>🔒 Segurança:</strong> senhas com bcrypt, JWT com expiração, rate limiting no login, Helmet, validação com Zod e isolamento por usuário em todas as queries.</p>
+ <p><strong>🧪 Testes:</strong> 96 testes (unitários + integração) cobrindo auth, isolamento entre usuários e CRUD de todos os módulos.</p>`
+}};
 
 const modal=document.getElementById('projectModal');
-function openModal(id){const p=projects[id];if(!p)return;
- document.getElementById('modalContent').innerHTML=`<h2>${p.title}</h2><div class="m-meta">${p.desc}</div><div class="techs">${p.techs.map(t=>`<span>${t}</span>`).join('')}</div><div class="m-desc">${p.details}${gh(p.github)}</div><div class="m-actions"><a href="${p.github}" target="_blank" rel="noopener" class="btn btn-s btn-sm"><i class="fa-brands fa-github"></i> Ver no GitHub</a><button class="btn btn-p btn-sm" onclick="closeModal()"><i class="fa-regular fa-circle-check"></i> Fechar</button></div>`;
- modal.classList.add('active');document.body.style.overflow='hidden'}
-function closeModal(){modal.classList.remove('active');document.body.style.overflow=''}
+const modalContent=document.getElementById('modalContent');
+
+function openModal(id){
+ const p=projects[id];if(!p)return;
+ modalContent.innerHTML=`
+  <h2>${p.title}</h2>
+  ${p.desc?`<div class="m-meta">${p.desc}</div>`:''}
+  <div class="techs">${p.techs.map(t=>`<span>${t}</span>`).join('')}</div>
+  <div class="m-desc">${p.details}${gh(p.github)}</div>
+  <div class="m-actions">
+   <a href="${p.github}" target="_blank" rel="noopener" class="btn btn-s btn-sm"><i class="fa-brands fa-github"></i> Ver no GitHub</a>
+   <button class="btn btn-p btn-sm" onclick="closeModal()"><i class="fa-regular fa-circle-check"></i> Fechar</button>
+  </div>`;
+ modal.classList.add('active');
+ document.body.style.overflow='hidden';
+}
+function closeModal(){
+ modal.classList.remove('active');
+ document.body.style.overflow='';
+}
 addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
 
-// Menu mobile
-const toggle=document.getElementById('menuToggle'),links=document.getElementById('navLinks');
-toggle.addEventListener('click',()=>{const o=links.classList.toggle('open');toggle.classList.toggle('active');toggle.setAttribute('aria-expanded',o)});
-links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');toggle.classList.remove('active');toggle.setAttribute('aria-expanded','false')}));
+const toggle=document.getElementById('menuToggle');
+const links=document.getElementById('navLinks');
+toggle.addEventListener('click',()=>{
+ const o=links.classList.toggle('open');
+ toggle.classList.toggle('active');
+ toggle.setAttribute('aria-expanded',o);
+});
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+ links.classList.remove('open');
+ toggle.classList.remove('active');
+ toggle.setAttribute('aria-expanded','false');
+}));
 
-// Scroll: seção ativa, navbar, topo, progresso
-const secs=document.querySelectorAll('section[id]'),items=document.querySelectorAll('.nav-links a'),
- nav=document.querySelector('.navbar'),topBtn=document.getElementById('scrollTop'),bar=document.getElementById('progress');
+const secs=document.querySelectorAll('section[id]');
+const items=document.querySelectorAll('.nav-links a');
+const nav=document.querySelector('.navbar');
+const topBtn=document.getElementById('scrollTop');
+const bar=document.getElementById('progress');
+
 function onScroll(){
- const y=scrollY,max=document.documentElement.scrollHeight-innerHeight;
- let cur='';secs.forEach(s=>{if(y+100>=s.offsetTop&&y+100<s.offsetTop+s.offsetHeight)cur=s.id});
+ const y=scrollY;
+ const max=document.documentElement.scrollHeight-innerHeight;
+ let cur='';
+ secs.forEach(s=>{
+  if(y+100>=s.offsetTop && y+100<s.offsetTop+s.offsetHeight) cur=s.id;
+ });
  items.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
- nav.classList.toggle('scrolled',y>20);topBtn.classList.toggle('visible',y>400);
- bar.style.transform=`scaleX(${max>0?y/max:0})`}
-addEventListener('scroll',onScroll,{passive:true});addEventListener('load',onScroll);
+ nav.classList.toggle('scrolled',y>20);
+ topBtn.classList.toggle('visible',y>400);
+ bar.style.transform=`scaleX(${max>0?y/max:0})`;
+}
+addEventListener('scroll',onScroll,{passive:true});
+addEventListener('load',onScroll);
 topBtn.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
 
-// Revelar ao rolar
 const els=document.querySelectorAll('[data-animate]');
 if('IntersectionObserver' in window){
- const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const el=e.target;setTimeout(()=>el.classList.add('visible'),parseInt(el.dataset.delay)||0);io.unobserve(el)}}),{threshold:.12,rootMargin:'0px 0px -20px 0px'});
- els.forEach(el=>io.observe(el))}else els.forEach(el=>el.classList.add('visible'));
+ const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){
+   const el=e.target;
+   setTimeout(()=>el.classList.add('visible'),parseInt(el.dataset.delay)||0);
+   io.unobserve(el);
+  }
+ }),{threshold:.12,rootMargin:'0px 0px -20px 0px'});
+ els.forEach(el=>io.observe(el));
+}else els.forEach(el=>el.classList.add('visible'));
 
-// Brilho que segue o mouse
-document.querySelectorAll('.card').forEach(c=>c.addEventListener('pointermove',e=>{const b=c.getBoundingClientRect();c.style.setProperty('--mx',e.clientX-b.left+'px');c.style.setProperty('--my',e.clientY-b.top+'px')}));
+document.querySelectorAll('.card').forEach(c=>c.addEventListener('pointermove',e=>{
+ const b=c.getBoundingClientRect();
+ c.style.setProperty('--mx',e.clientX-b.left+'px');
+ c.style.setProperty('--my',e.clientY-b.top+'px');
+}));
 
-// Digitação do cargo (edite a lista à vontade)
 const role=document.getElementById('typingRole');
 if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
- const roles=['Desenvolvedor Full Stack','Java & Spring Boot','Entusiasta de IA e automação'];let r=0,c=0,del=false;
- (function tick(){const w=roles[r];c+=del?-1:1;role.textContent=w.slice(0,c);let t=del?35:75;
-  if(!del&&c===w.length){del=true;t=1600}else if(del&&c===0){del=false;r=(r+1)%roles.length;t=350}
-  setTimeout(tick,t)})();}
+ const roles=['Desenvolvedor Full Stack','Java & Spring Boot','Entusiasta de IA e automação'];
+ let r=0,c=0,del=false;
+ (function tick(){
+  const w=roles[r];
+  c+=del?-1:1;
+  role.textContent=w.slice(0,c);
+  let t=del?35:75;
+  if(!del&&c===w.length){del=true;t=1600}
+  else if(del&&c===0){del=false;r=(r+1)%roles.length;t=350}
+  setTimeout(tick,t);
+ })();
+}
 </script>
 </body>
 </html>
