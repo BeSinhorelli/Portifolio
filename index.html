@@ -118,7 +118,28 @@ section.alt{background:linear-gradient(180deg,rgba(22,27,34,.9),rgba(13,17,23,.4
 .p-img .fallback{position:absolute;inset:0}
 .p-img .fallback i{font-size:3.5rem;opacity:.2;margin:0}
 .p-body{padding:26px 28px 28px}
-.star{display:inline-block;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#fbbf24;background:linear-gradient(135deg,rgba(251,191,36,.18),rgba(251,146,60,.12));border:1px solid rgba(251,191,36,.25);padding:3px 14px;border-radius:var(--pill);margin-bottom:10px}
+.star {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #fbbf24;
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.18), rgba(251, 146, 60, 0.12));
+    border: 1px solid rgba(251, 191, 36, 0.25);
+    padding: 4px 12px;
+    border-radius: 100px;
+    margin-bottom: 12px;
+    line-height: 1;
+    width: fit-content;
+}
+
+.star.freelance {
+    color: #22c55e;
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.18), rgba(16, 185, 129, 0.12));
+    border-color: rgba(34, 197, 94, 0.3);
+}
 .p-body h3{font-size:1.2rem;font-weight:700;margin-bottom:8px}
 .p-body p{color:var(--tx2);font-size:.92rem;line-height:1.6;margin-bottom:16px}
 .techs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
@@ -185,7 +206,7 @@ section.alt{background:linear-gradient(180deg,rgba(22,27,34,.9),rgba(13,17,23,.4
 [data-animate]{opacity:0;transform:translateY(40px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
 [data-animate].visible{opacity:1;transform:none}
 
-/* ============ RESPONSIVO ============ */
+/* RESPONSIVO */
 @media(max-width:992px){
     .about-grid{grid-template-columns:1fr;gap:44px}
     .m-desc .grid{grid-template-columns:1fr}
@@ -412,7 +433,26 @@ section.alt{background:linear-gradient(180deg,rgba(22,27,34,.9),rgba(13,17,23,.4
   <div class="section-header centered"><span class="tag">Projetos</span><h2 class="section-title">Meus <span>trabalhos</span></h2><p class="section-subtitle">Projetos que desenvolvi para estudar, praticar e resolver problemas</p></div>
   <div class="projects-grid">
 
+   <!-- PROJETO 1 — LS Trainer (Freelance) -->
    <article class="card project" data-animate>
+    <div class="p-img">
+     <img src="assets/images/lstrainer.png" alt="LS Trainer - Sistema de Gestão de Fichas de Treino" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+     <div class="fallback"><i class="fa-solid fa-dumbbell"></i></div>
+    </div>
+    <div class="p-body">
+     <span class="star freelance" style="font-size: 0.55rem; padding: 3px 10px; border-radius: 100px; display: inline-flex; align-items: center; gap: 4px; width: auto; height: auto; line-height: 1; margin-bottom: 12px;">★ Freelance</span>
+     <h3>LS Trainer System</h3>
+     <p>Sistema Full-Stack de gestão de fichas de treino, desenvolvido como primeiro projeto freelance. Substitui fichas de papel por uma solução digital segura e responsiva.</p>
+     <div class="techs"><span>Java</span><span>Spring Boot</span><span>React</span><span>TypeScript</span><span>PostgreSQL</span><span>Docker</span></div>
+     <div class="p-actions">
+      <a href="https://ls-trainer.vercel.app" target="_blank" rel="noopener" class="btn btn-s btn-sm"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver ao vivo</a>
+      <button class="btn btn-p btn-sm" onclick="openModal('lstrainer')"><i class="fa-regular fa-eye"></i> Ver projeto</button>
+     </div>
+    </div>
+   </article>
+
+   <!-- PROJETO 2 — Finance Control -->
+   <article class="card project" data-animate data-delay="100">
     <div class="p-img">
      <img src="assets/images/finance.png" alt="Finance Control" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
      <div class="fallback"><i class="fa-solid fa-coins"></i></div>
@@ -429,7 +469,8 @@ section.alt{background:linear-gradient(180deg,rgba(22,27,34,.9),rgba(13,17,23,.4
     </div>
    </article>
 
-   <article class="card project" data-animate data-delay="100">
+   <!-- PROJETO 3 — GameScoreManager -->
+   <article class="card project" data-animate data-delay="200">
     <div class="p-img">
      <img src="assets/images/game.png" alt="GameScoreManager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
      <div class="fallback"><i class="fa-solid fa-gamepad"></i></div>
@@ -445,7 +486,8 @@ section.alt{background:linear-gradient(180deg,rgba(22,27,34,.9),rgba(13,17,23,.4
     </div>
    </article>
 
-   <article class="card project" data-animate data-delay="200">
+   <!-- PROJETO 4 — StudyTrack -->
+   <article class="card project" data-animate data-delay="300">
     <div class="p-img">
      <img src="assets/images/study.png" alt="StudyTrack" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
      <div class="fallback"><i class="fa-solid fa-book-open"></i></div>
@@ -626,6 +668,35 @@ section.alt{background:linear-gradient(180deg,rgba(22,27,34,.9),rgba(13,17,23,.4
 const gh=u=>`<p><strong>GitHub:</strong> <a href="${u}" target="_blank" rel="noopener">${u.replace('https://','')}</a></p>`;
 
 const projects={
+lstrainer:{
+ title:'LS Trainer',
+ techs:['Java','Spring Boot','React','TypeScript','PostgreSQL','Docker','GitHub Actions'],
+ github:'https://github.com/BeSinhorelli/Freelance-LS_Trainer',
+ desc:'Sistema Full-Stack de gestão de fichas de treino, desenvolvido como meu primeiro projeto freelance para substituir fichas de papel por uma solução digital segura e responsiva.',
+ details:`
+ <p>O <strong>LS Trainer</strong> é uma aplicação <strong>Full-Stack</strong> desenvolvida como meu <strong>primeiro projeto freelance</strong>, com o objetivo de substituir as fichas de treino de papel da academia por uma solução digital segura, responsiva e acessível de qualquer dispositivo.</p>
+ <p><strong>🌐 Links do Projeto:</strong></p>
+ <ul>
+  <li><strong>Sistema em Produção:</strong> <a href="https://ls-trainer.vercel.app" target="_blank" rel="noopener">ls-trainer.vercel.app</a></li>
+  <li><strong>Documentação da API (Swagger):</strong> <a href="https://lstrainer-api.onrender.com/swagger-ui.html" target="_blank" rel="noopener">lstrainer-api.onrender.com/swagger-ui.html</a></li>
+ </ul>
+ <p><strong>🚀 Funcionalidades:</strong></p>
+ <ul class="grid">
+  <li>🔐 Autenticação segura com JWT em cookies HttpOnly</li>
+  <li>👥 Gestão de alunos com isolamento por professor (prevenção de IDOR)</li>
+  <li>🏋️ Biblioteca de exercícios e montagem dinâmica de fichas</li>
+  <li>📏 Avaliações físicas e prescrições de cardio</li>
+  <li>📊 Dashboard com contadores reais e reavaliações próximas</li>
+  <li>📱 Interface responsiva para qualquer dispositivo</li>
+ </ul>
+ <p><strong>🏗️ Arquitetura distribuída:</strong></p>
+ <ul>
+  <li><strong>Vercel:</strong> Hospeda o frontend React (SPA)</li>
+  <li><strong>Render:</strong> Hospeda a API Spring Boot (conteinerizada com Docker)</li>
+  <li><strong>Neon.tech:</strong> Banco de dados PostgreSQL Serverless</li>
+  <li>Comunicação protegida por <strong>CORS</strong> e <strong>cookies SameSite=None</strong></li>
+ </ul>`
+},
 finance:{
  title:'Finance Control',
  techs:['Java','Spring Boot','Python','MySQL','HTML','CSS','JS'],
