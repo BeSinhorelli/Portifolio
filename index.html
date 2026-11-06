@@ -134,12 +134,6 @@ section.alt{background:linear-gradient(180deg,rgba(22,27,34,.9),rgba(13,17,23,.4
     line-height: 1;
     width: fit-content;
 }
-
-.star.freelance {
-    color: #22c55e;
-    background: linear-gradient(135deg, rgba(34, 197, 94, 0.18), rgba(16, 185, 129, 0.12));
-    border-color: rgba(34, 197, 94, 0.3);
-}
 .p-body h3{font-size:1.2rem;font-weight:700;margin-bottom:8px}
 .p-body p{color:var(--tx2);font-size:.92rem;line-height:1.6;margin-bottom:16px}
 .techs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
@@ -410,11 +404,11 @@ section.alt{background:linear-gradient(180deg,rgba(22,27,34,.9),rgba(13,17,23,.4
   <div class="skills-grid">
    <div class="card" data-animate>
     <h3 class="cat"><i class="fa-solid fa-server"></i>Backend</h3>
-    <div class="tags"><span>Java</span><span>Spring Boot</span><span>Python</span><span>Linguagem C</span></div>
+    <div class="tags"><span>Java</span><span>Spring Boot</span><span>Python</span><span>TypeScript</span><span>Linguagem C</span></div>
    </div>
    <div class="card" data-animate data-delay="100">
-    <h3 class="cat"><i class="fa-solid fa-code"></i>Frontend</h3>
-    <div class="tags"><span>HTML</span><span>CSS</span><span>TypeScript</span><span>React</span></div>
+    <h3 class="cat"><i class="fa-solid fa-code"></i>Frontend &amp; Mobile</h3>
+    <div class="tags"><span>HTML</span><span>CSS</span><span>TypeScript</span><span>React</span><span>Flutter</span></div>
    </div>
    <div class="card" data-animate data-delay="200">
     <h3 class="cat"><i class="fa-solid fa-database"></i>Banco de Dados</h3>
@@ -440,7 +434,7 @@ section.alt{background:linear-gradient(180deg,rgba(22,27,34,.9),rgba(13,17,23,.4
      <div class="fallback"><i class="fa-solid fa-dumbbell"></i></div>
     </div>
     <div class="p-body">
-     <span class="star freelance" style="font-size: 0.55rem; padding: 3px 10px; border-radius: 100px; display: inline-flex; align-items: center; gap: 4px; width: auto; height: auto; line-height: 1; margin-bottom: 12px;">★ Freelance</span>
+    <span class="star" style="color: #d1d40e;" style="background-color: #0fd10f;">★ Freelance</span>
      <h3>LS Trainer System</h3>
      <p>Sistema Full-Stack de gestão de fichas de treino, desenvolvido como primeiro projeto freelance. Substitui fichas de papel por uma solução digital segura e responsiva.</p>
      <div class="techs"><span>Java</span><span>Spring Boot</span><span>React</span><span>TypeScript</span><span>PostgreSQL</span><span>Docker</span></div>
@@ -678,7 +672,6 @@ lstrainer:{
  <p><strong>🌐 Links do Projeto:</strong></p>
  <ul>
   <li><strong>Sistema em Produção:</strong> <a href="https://ls-trainer.vercel.app" target="_blank" rel="noopener">ls-trainer.vercel.app</a></li>
-  <li><strong>Documentação da API (Swagger):</strong> <a href="https://lstrainer-api.onrender.com/swagger-ui.html" target="_blank" rel="noopener">lstrainer-api.onrender.com/swagger-ui.html</a></li>
  </ul>
  <p><strong>🚀 Funcionalidades:</strong></p>
  <ul class="grid">
@@ -694,7 +687,17 @@ lstrainer:{
   <li><strong>Vercel:</strong> Hospeda o frontend React (SPA)</li>
   <li><strong>Render:</strong> Hospeda a API Spring Boot (conteinerizada com Docker)</li>
   <li><strong>Neon.tech:</strong> Banco de dados PostgreSQL Serverless</li>
+  <li><strong>Google Cloud:</strong> Provedor de identidade (OAuth2) para login seguro</li>
   <li>Comunicação protegida por <strong>CORS</strong> e <strong>cookies SameSite=None</strong></li>
+ </ul>
+ <p><strong>🛡️ Segurança e Boas Práticas:</strong></p>
+ <ul>
+  <li><strong>OAuth2 (Google):</strong> Elimina o risco de vazamento de senhas e ataques de força bruta</li>
+  <li><strong>JWT em Cookies HttpOnly:</strong> Protege o token contra ataques XSS (o JavaScript não consegue ler o cookie)</li>
+  <li><strong>Isolamento de Dados (IDOR):</strong> Todas as queries filtram pelo ID do professor logado. Um professor não vê os dados de outro</li>
+  <li><strong>Rate Limit (Bucket4j):</strong> Protege o backend contra abusos e ataques de negação de serviço (DoS)</li>
+  <li><strong>Sanitização de Entradas:</strong> Prevenção contra XSS e injeção de scripts em todos os campos de texto</li>
+  <li><strong>Validação de Tamanho:</strong> Limites de caracteres no Backend e Frontend para evitar payloads gigantes</li>
  </ul>`
 },
 finance:{
